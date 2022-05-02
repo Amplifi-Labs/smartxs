@@ -1,0 +1,25 @@
+{
+  "name": "smartxs",
+  "version": "1.0.0",
+  "description": "Tailwind based react native package",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react-native",
+    "tailwind",
+    "rn",
+    "twrnc"
+  ],
+  "author": "Amplifi Labs",
+  "license": "MIT",
+  "dependencies": {
+    "react-native": "0.68.x",
+    "twrnc": "3.x"
+  },
+  "peerDependencies": {
+    "react-native": "0.68.x",
+    "twrnc": "3.x"
+  }
+}
