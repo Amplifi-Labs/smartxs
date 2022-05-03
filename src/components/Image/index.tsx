@@ -2,7 +2,8 @@ import React from 'react';
 import {Image as Image_, ImageSourcePropType, View} from 'react-native';
 import {SvgXml} from 'react-native-svg';
 import {Style} from 'twrnc/dist/esm/types';
-import tw from '../../lib/tailwind';
+
+import tw from '../../services/tailwind';
 
 type Props = {
   svg?: string;

@@ -1,7 +1,8 @@
 import React from 'react';
 import {Text} from 'react-native';
 import {Style} from 'twrnc/dist/esm/types';
-import tw from '../../lib/tailwind';
+
+import tw from '../../services/tailwind';
 
 type Props = {
   style?: Style;

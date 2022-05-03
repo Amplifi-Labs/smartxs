@@ -2,3 +2,5 @@ node_modules
 package
 .cache
 .DS_STORE
+
+dist

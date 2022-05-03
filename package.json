@@ -1,8 +1,8 @@
 {
   "name": "@amplifi-labs/smartxs",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "Tailwind based react native package",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc"
   },

@@ -7,37 +7,36 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import tw from '../../lib/tailwind';
 
-const SCREEN_HEIGHT = Dimensions.get('window').height;
+import tw from '../../services/tailwind';
 
-let initialPosition: number;
+const WINDOW_HEIGHT = Dimensions.get('window').height;
+
 const duration = 200;
 
 type Props = {
   children: JSX.Element | JSX.Element[];
+  initialPosition: number;
   finalPosition: number;
-  onInitialPositionReached?: () => void;
 };
 
 let ref: Animated.LegacyRef<View>;
 
-const DraggableView = ({
-  children,
-  finalPosition,
-  onInitialPositionReached,
-}: Props) => {
+const DraggableView = ({children, initialPosition, finalPosition}: Props) => {
   const [touched, setTouched] = useState(false);
 
   const [isOpen, setIsOpen] = useState(false);
 
   const [position, setPosition] = useState(
-    new Animated.Value(SCREEN_HEIGHT * (1 - 0.05) - 100),
+    new Animated.Value(WINDOW_HEIGHT - initialPosition),
   );
 
   useEffect(() => {
     if (!initialPosition) {
-      initialPosition = SCREEN_HEIGHT * (1 - 0.05) - 100;
+      const initialPosition_ = WINDOW_HEIGHT - initialPosition;
+
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      initialPosition = initialPosition_;
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -53,14 +52,6 @@ const DraggableView = ({
   const onUpdatePosition = (position_: number) => {
     const tempPosition = position_ - 100;
     setPosition(tempPosition as unknown as Animated.Value);
-
-    if (
-      initialPosition &&
-      initialPosition === tempPosition &&
-      onInitialPositionReached
-    ) {
-      onInitialPositionReached();
-    }
   };
 
   const moveDrawerView = (gesture: PanResponderGestureState) => {
@@ -72,12 +63,14 @@ const DraggableView = ({
   };
 
   const startAnimation = (positionY: number) => {
-    const endPosition = SCREEN_HEIGHT - (finalPosition + 50);
+    const endPosition = WINDOW_HEIGHT - (finalPosition + 50);
 
-    const position_ = new Animated.Value(SCREEN_HEIGHT - positionY - 200);
+    const position_ = new Animated.Value(WINDOW_HEIGHT - positionY - 200);
     position_.removeAllListeners();
 
-    const toValue = !isOpen ? endPosition : initialPosition + 100;
+    const toValue = !isOpen
+      ? endPosition
+      : WINDOW_HEIGHT - initialPosition + 100;
 
     Animated.timing(position_, {
       toValue,
@@ -115,25 +108,28 @@ const DraggableView = ({
   });
 
   return (
-    <Animated.View
-      ref={(ref_: Animated.LegacyRef<View>) => {
-        ref = ref_;
-      }}
-      style={{
-        ...tw`absolute left-0 w-full rounded-t-2xl bg-white`,
-        top: position,
-        height: SCREEN_HEIGHT,
-      }}
-      {..._panGesture.panHandlers}>
-      <TouchableWithoutFeedback
-        onPressIn={() => setTouched(true)}
-        onPressOut={() => setTouched(false)}>
-        <View style={tw`items-center h-12`}>
-          <View style={tw`bg-gray-300 h-1.5 w-14 mt-2 mb-5 rounded-full`} />
-        </View>
-      </TouchableWithoutFeedback>
-      {children}
-    </Animated.View>
+    <>
+      {position && (
+        <Animated.View
+          ref={(ref_: Animated.LegacyRef<View>) => {
+            ref = ref_;
+          }}
+          style={{
+            ...tw`absolute left-0 w-full rounded-t-2xl bg-white h-full`,
+            top: position,
+          }}
+          {..._panGesture.panHandlers}>
+          <TouchableWithoutFeedback
+            onPressIn={() => setTouched(true)}
+            onPressOut={() => setTouched(false)}>
+            <View style={tw`items-center h-12`}>
+              <View style={tw`bg-gray-300 h-1.5 w-14 mt-2 mb-5 rounded-full`} />
+            </View>
+          </TouchableWithoutFeedback>
+          {children}
+        </Animated.View>
+      )}
+    </>
   );
 };
 

@@ -1,8 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import {Text, TextInput, View} from 'react-native';
 import {Style} from 'twrnc/dist/esm/types';
-import tw from '../../lib/tailwind';
 import currenciesArray from './currencies-table.json';
+
+import tw from '../../services/tailwind';
+
+type Currency = {
+  abbreviation: string;
+  symbol: string;
+};
 
 type Props = {
   label?: string;
@@ -36,7 +42,7 @@ const InputCurrency = ({
   const [symbol, setSymbol] = useState('');
 
   useEffect(() => {
-    const currencyObj = currenciesArray.find(
+    const currencyObj = (currenciesArray as Currency[]).find(
       currency_ => currency_.abbreviation === currency,
     );
     if (currencyObj) {

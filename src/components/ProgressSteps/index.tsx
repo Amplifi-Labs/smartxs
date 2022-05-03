@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {View} from 'react-native';
 import {Style} from 'twrnc/dist/esm/types';
-import tw from '../../lib/tailwind';
 import Image from '../Image';
+
+import tw from '../../services/tailwind';
 
 type Props = {
   steps: number;

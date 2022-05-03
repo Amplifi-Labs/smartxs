@@ -1,8 +1,9 @@
 import React from 'react';
 import {View} from 'react-native';
 import {Style} from 'twrnc/dist/esm/types';
-import tw from '../../lib/tailwind';
 import Spinner from '../Spinner';
+
+import tw from '../../services/tailwind';
 
 type Props = {
   children: JSX.Element | JSX.Element[] | string;

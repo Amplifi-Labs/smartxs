@@ -2,10 +2,11 @@ import React from 'react';
 import {Pressable, Text, TextInput, View} from 'react-native';
 import {SvgXml} from 'react-native-svg';
 import {Style} from 'twrnc/dist/esm/types';
-import tw from '../../lib/tailwind';
 import {useTogglePasswordVisibility} from './hooks/useTogglePasswordVisibility';
 import Invisible from './icons/Invisible';
 import Visible from './icons/Visible';
+
+import tw from '../../services/tailwind';
 
 type Props = {
   label?: string;
