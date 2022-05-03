@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {Text, TouchableOpacity} from 'react-native';
 import {Style} from 'twrnc/dist/esm/types';
 
@@ -13,7 +13,14 @@ type Props = {
   type?: 'primary' | 'secondary';
 };
 
-const Button = ({tw, style, textStyle, onPress, children, type}: Props) => {
+const Button = ({
+  tw,
+  style,
+  textStyle,
+  onPress,
+  children,
+  type,
+}: Props): JSX.Element => {
   const bgColor = `bg-${type || 'indigo'}-700`;
 
   const defaultStyles = tw.style(

@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import * as React from 'react';
+import {useEffect, useState} from 'react';
 import {Animated, Easing} from 'react-native';
 
 type Props = {
@@ -6,7 +7,7 @@ type Props = {
   children: JSX.Element | JSX.Element[] | string;
 };
 
-const Spinner = ({time, children}: Props) => {
+const Spinner = ({time, children}: Props): JSX.Element => {
   const [spinValue] = useState(new Animated.Value(0));
 
   useEffect(() => {

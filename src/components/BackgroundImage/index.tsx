@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {
   ImageBackground,
   ImageSourcePropType,
@@ -22,7 +22,7 @@ const BackgroundImage = ({
   children,
   bottomColor,
   mask = 'bg-white/90',
-}: Props) => {
+}: Props): JSX.Element => {
   return (
     <View style={tw`flex-1`}>
       <ImageBackground source={image} resizeMode="cover" style={tw`flex-1`}>

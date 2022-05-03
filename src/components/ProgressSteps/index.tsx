@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import * as React from 'react';
+import {useEffect, useState} from 'react';
 import {View} from 'react-native';
 import {Style} from 'twrnc/dist/esm/types';
 import Image from '../Image';
@@ -12,7 +13,7 @@ type Props = {
   style?: Style;
 };
 
-const Info = ({tw, steps, current, style}: Props) => {
+const Info = ({tw, steps, current, style}: Props): JSX.Element => {
   const defaultStyles = tw``;
 
   const [svg, setSvg] =

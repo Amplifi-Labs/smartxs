@@ -1,7 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import * as React from 'react';
+import {useEffect, useState} from 'react';
 import {Text, TextInput, View} from 'react-native';
 import {Style} from 'twrnc/dist/esm/types';
-import currenciesArray from './currencies-table.json';
+import currenciesArray from './currencies-table';
 
 import {TailwindFn} from 'twrnc';
 
@@ -40,7 +41,7 @@ const InputCurrency = ({
   inputType,
   helperType,
   currency = 'USD',
-}: Props) => {
+}: Props): JSX.Element => {
   const [symbol, setSymbol] = useState('');
 
   useEffect(() => {

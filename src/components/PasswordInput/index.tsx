@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {Pressable, Text, TextInput, View} from 'react-native';
 import {SvgXml} from 'react-native-svg';
 import {Style} from 'twrnc/dist/esm/types';
@@ -29,7 +29,7 @@ const PasswordInput: React.FC<Props> = ({
   label,
   placeholder,
   helper,
-  style,
+  // style,
   labelStyle,
   inputStyle,
   textInputStyle,
@@ -38,7 +38,7 @@ const PasswordInput: React.FC<Props> = ({
   value,
   inputType,
   helperType,
-}) => {
+}): JSX.Element => {
   const {passwordVisibility, handlePasswordVisibility} =
     useTogglePasswordVisibility();
 

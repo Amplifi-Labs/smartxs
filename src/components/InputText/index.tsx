@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {Text, TextInput, View} from 'react-native';
 import {Style} from 'twrnc/dist/esm/types';
 
@@ -32,7 +32,7 @@ const InputText = ({
   value,
   inputType,
   helperType,
-}: Props) => {
+}: Props): JSX.Element => {
   const defaultLabelStyle = tw.style('font-sm font-medium text-gray-700 pb-1x');
   const defaultInputStyle = tw.style(
     'font-sm font-normal text-gray-500 bg-white p-3 rounded-md border-gray-300 border w-full',

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {Image as Image_, ImageSourcePropType, View} from 'react-native';
 import {SvgXml} from 'react-native-svg';
 import {Style} from 'twrnc/dist/esm/types';
@@ -14,7 +14,7 @@ type Props = {
   height?: number;
 };
 
-const Image = ({tw, svg, src, style, width, height}: Props) => {
+const Image = ({tw, svg, src, style, width, height}: Props): JSX.Element => {
   const defaultStyles = tw``;
 
   if (svg) {
