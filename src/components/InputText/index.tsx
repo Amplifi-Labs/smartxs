@@ -2,9 +2,10 @@ import React from 'react';
 import {Text, TextInput, View} from 'react-native';
 import {Style} from 'twrnc/dist/esm/types';
 
-import tw from '../../services/tailwind';
+import {TailwindFn} from 'twrnc';
 
 type Props = {
+  tw: TailwindFn;
   label?: string;
   placeholder?: string;
   helper?: string;
@@ -19,6 +20,7 @@ type Props = {
 };
 
 const InputText = ({
+  tw,
   label,
   placeholder,
   helper,

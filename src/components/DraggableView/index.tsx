@@ -8,13 +8,14 @@ import {
   View,
 } from 'react-native';
 
-import tw from '../../services/tailwind';
+import {TailwindFn} from 'twrnc';
 
 const WINDOW_HEIGHT = Dimensions.get('window').height;
 
 const duration = 200;
 
 type Props = {
+  tw: TailwindFn;
   children: JSX.Element | JSX.Element[];
   initialPosition: number;
   finalPosition: number;
@@ -22,7 +23,12 @@ type Props = {
 
 let ref: Animated.LegacyRef<View>;
 
-const DraggableView = ({children, initialPosition, finalPosition}: Props) => {
+const DraggableView = ({
+  tw,
+  children,
+  initialPosition,
+  finalPosition,
+}: Props) => {
   const [touched, setTouched] = useState(false);
 
   const [isOpen, setIsOpen] = useState(false);

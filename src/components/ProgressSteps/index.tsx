@@ -3,15 +3,16 @@ import {View} from 'react-native';
 import {Style} from 'twrnc/dist/esm/types';
 import Image from '../Image';
 
-import tw from '../../services/tailwind';
+import {TailwindFn} from 'twrnc';
 
 type Props = {
+  tw: TailwindFn;
   steps: number;
   current: number;
   style?: Style;
 };
 
-const Info = ({steps, current, style}: Props) => {
+const Info = ({tw, steps, current, style}: Props) => {
   const defaultStyles = tw``;
 
   const [svg, setSvg] =
@@ -51,7 +52,7 @@ const Info = ({steps, current, style}: Props) => {
 
   return (
     <View style={{...defaultStyles, ...style}}>
-      <Image svg={svg} width={imageWidth} />
+      <Image tw={tw} svg={svg} width={imageWidth} />
     </View>
   );
 };

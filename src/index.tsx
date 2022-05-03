@@ -1,3 +1,4 @@
+import BackgroundImage from './components/BackgroundImage';
 import Button from './components/Button';
 import DraggableView from './components/DraggableView';
 import H1 from './components/H1';
@@ -10,7 +11,8 @@ import PasswordInput from './components/PasswordInput';
 import ProgressSteps from './components/ProgressSteps';
 import Spinner from './components/Spinner';
 
-export default {
+export {
+  BackgroundImage,
   Button,
   DraggableView,
   H1,

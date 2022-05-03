@@ -3,9 +3,10 @@ import {Image as Image_, ImageSourcePropType, View} from 'react-native';
 import {SvgXml} from 'react-native-svg';
 import {Style} from 'twrnc/dist/esm/types';
 
-import tw from '../../services/tailwind';
+import {TailwindFn} from 'twrnc';
 
 type Props = {
+  tw: TailwindFn;
   svg?: string;
   src?: ImageSourcePropType;
   style?: Style;
@@ -13,7 +14,7 @@ type Props = {
   height?: number;
 };
 
-const Image = ({svg, src, style, width, height}: Props) => {
+const Image = ({tw, svg, src, style, width, height}: Props) => {
   const defaultStyles = tw``;
 
   if (svg) {

@@ -2,9 +2,10 @@ import React from 'react';
 import {Text, TouchableOpacity} from 'react-native';
 import {Style} from 'twrnc/dist/esm/types';
 
-import tw from '../../services/tailwind';
+import {TailwindFn} from 'twrnc';
 
 type Props = {
+  tw: TailwindFn;
   onPress: () => void;
   style?: Style;
   textStyle?: Style;
@@ -12,7 +13,7 @@ type Props = {
   type?: 'primary' | 'secondary';
 };
 
-const Button = ({style, textStyle, onPress, children, type}: Props) => {
+const Button = ({tw, style, textStyle, onPress, children, type}: Props) => {
   const bgColor = `bg-${type || 'indigo'}-700`;
 
   const defaultStyles = tw.style(

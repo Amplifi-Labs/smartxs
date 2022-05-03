@@ -6,9 +6,10 @@ import {useTogglePasswordVisibility} from './hooks/useTogglePasswordVisibility';
 import Invisible from './icons/Invisible';
 import Visible from './icons/Visible';
 
-import tw from '../../services/tailwind';
+import {TailwindFn} from 'twrnc';
 
 type Props = {
+  tw: TailwindFn;
   label?: string;
   placeholder?: string;
   helper?: string;
@@ -24,6 +25,7 @@ type Props = {
 };
 
 const PasswordInput: React.FC<Props> = ({
+  tw,
   label,
   placeholder,
   helper,

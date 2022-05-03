@@ -3,7 +3,7 @@ import {Text, TextInput, View} from 'react-native';
 import {Style} from 'twrnc/dist/esm/types';
 import currenciesArray from './currencies-table.json';
 
-import tw from '../../services/tailwind';
+import {TailwindFn} from 'twrnc';
 
 type Currency = {
   abbreviation: string;
@@ -11,6 +11,7 @@ type Currency = {
 };
 
 type Props = {
+  tw: TailwindFn;
   label?: string;
   placeholder?: number;
   helper?: string;
@@ -26,6 +27,7 @@ type Props = {
 };
 
 const InputCurrency = ({
+  tw,
   label,
   placeholder,
   helper,
