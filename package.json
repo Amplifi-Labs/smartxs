@@ -1,10 +1,10 @@
 {
-  "name": "smartxs",
-  "version": "1.0.0",
+  "name": "@amplifi-labs/smartxs",
+  "version": "0.0.4",
   "description": "Tailwind based react native package",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc"
   },
   "keywords": [
     "react-native",
@@ -15,11 +15,60 @@
   "author": "Amplifi Labs",
   "license": "MIT",
   "dependencies": {
-    "react-native": "0.68.x",
-    "twrnc": "3.x"
+    "react": "17.0.2",
+    "react-native": "^0.68.1",
+    "twrnc": "^3.3.0"
   },
   "peerDependencies": {
-    "react-native": "0.68.x",
-    "twrnc": "3.x"
-  }
+    "react": "17.0.2",
+    "react-native": "^0.68.1",
+    "twrnc": "^3.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/runtime": "^7.12.5",
+    "@react-native-community/eslint-config": "^2.0.0",
+    "@types/jest": "^26.0.23",
+    "@types/react-native": "^0.66.15",
+    "@types/react-test-renderer": "^17.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.7.0",
+    "@typescript-eslint/parser": "^5.7.0",
+    "babel-jest": "^26.6.3",
+    "eslint": "^8.9.0",
+    "eslint-config-prettier": "^8.4.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "jest": "^26.6.3",
+    "metro-react-native-babel-preset": "^0.66.2",
+    "react-native-svg": "^12.3.0",
+    "react-test-renderer": "17.0.2",
+    "typescript": "^4.4.4"
+  },
+  "resolutions": {
+    "@types/react": "^17"
+  },
+  "jest": {
+    "preset": "react-native",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Amplifi-Labs/smartxs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Amplifi-Labs/smartxs/issues"
+  },
+  "homepage": "https://github.com/Amplifi-Labs/smartxs#readme"
 }

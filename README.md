@@ -1,1 +1,1 @@
-## React Native package from Amplifi Labs
+## React Native package from Amplifi Labs - SMARTXS
