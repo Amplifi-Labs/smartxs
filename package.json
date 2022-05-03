@@ -1,13 +1,12 @@
 {
   "name": "@amplifi-labs/smartxs",
-  "version": "0.0.30",
+  "version": "0.0.31",
   "description": "Tailwind based react native package",
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
   "types": "./lib/esm/index.d.ts",
   "files": [
-    "/lib",
-    "/src"
+    "/lib"
   ],
   "scripts": {
     "build": "yarn build:esm && yarn build:cjs",
@@ -23,12 +22,12 @@
   "author": "Amplifi Labs",
   "license": "MIT",
   "dependencies": {
-    "react": "^17.0.2",
+    "react": "17.0.2",
     "react-native": "0.67.3",
-    "twrnc": "^3.3.0"
+    "twrnc": "3.3.0"
   },
   "devDependencies": {
-    "@types/react": "^17",
+    "@types/react": "17",
     "@babel/core": "^7.12.9",
     "@babel/runtime": "^7.12.5",
     "@react-native-community/eslint-config": "^2.0.0",
