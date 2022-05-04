@@ -3,8 +3,6 @@ import {Pressable, Text, TextInput, View} from 'react-native';
 import {SvgXml} from 'react-native-svg';
 import {Style} from 'twrnc/dist/esm/types';
 import {useTogglePasswordVisibility} from './hooks/useTogglePasswordVisibility';
-import Invisible from './icons/Invisible';
-import Visible from './icons/Visible';
 
 import {TailwindFn} from 'twrnc';
 
@@ -22,6 +20,8 @@ type Props = {
   value: string;
   inputType?: 'primary' | 'secondary';
   helperType?: 'primary' | 'secondary';
+  invisibleIcon: string;
+  visibleIcon: string;
 };
 
 const PasswordInput: React.FC<Props> = ({
@@ -38,6 +38,8 @@ const PasswordInput: React.FC<Props> = ({
   value,
   inputType,
   helperType,
+  invisibleIcon,
+  visibleIcon,
 }): JSX.Element => {
   const {passwordVisibility, handlePasswordVisibility} =
     useTogglePasswordVisibility();
@@ -83,12 +85,12 @@ const PasswordInput: React.FC<Props> = ({
           {passwordVisibility ? (
             <SvgXml
               style={tw.style(``, {resizeMode: 'contain'})}
-              xml={Invisible}
+              xml={invisibleIcon}
             />
           ) : (
             <SvgXml
               style={tw.style(``, {resizeMode: 'contain'})}
-              xml={Visible}
+              xml={visibleIcon}
             />
           )}
         </Pressable>
