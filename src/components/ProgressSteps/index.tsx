@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {useEffect, useState} from 'react';
 import {View} from 'react-native';
 import {Style} from 'twrnc/dist/esm/types';
 import Image from '../Image';
@@ -17,16 +16,16 @@ const Info = ({tw, steps, current, style}: Props): JSX.Element => {
   const defaultStyles = tw`h-1`;
 
   const [svg, setSvg] =
-    useState(`<svg width="39" height="4" viewBox="0 0 39 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+    React.useState(`<svg width="39" height="4" viewBox="0 0 39 4" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect x="0.29895" width="16.968" height="4" rx="2" fill="#6B7280"/>
   <rect opacity="0.3" x="20.267" width="4.16667" height="4" rx="2" fill="#6B7280"/>
   <rect opacity="0.3" x="27.4336" width="4.16667" height="4" rx="2" fill="#6B7280"/>
   <rect opacity="0.3" x="34.6003" width="4.16667" height="4" rx="2" fill="#6B7280"/>
   </svg>`);
 
-  const [imageWidth, setImageWidth] = useState(0);
+  const [imageWidth, setImageWidth] = React.useState(0);
 
-  useEffect(() => {
+  React.useEffect(() => {
     let x = 0.29895;
     const space = 3;
     const width = 17;

@@ -10,7 +10,7 @@ type Props = {
   onPress: () => void;
   style?: Style;
   textStyle?: Style;
-  children: JSX.Element | JSX.Element[] | string;
+  children: string;
   type?: 'primary' | 'secondary';
   iconLeft?: string;
   iconRight?: string;

@@ -16,6 +16,8 @@ Key concepts of this library:
 - Tailwind CSS is doing great on the Web apps, we want to make the process of using Tailwind on the mobile as easy as on the web;
 - Focus on reusability and flexibility;
 
+If your project uses SmartXS, please, let us know! We would love :heart: to have this information!
+
 # Components
 
 ## BackgroundImage
@@ -23,6 +25,8 @@ Key concepts of this library:
 ### Description:
 
 This component creates a View with an image as background. Accepts jpeg and png files.
+
+### Samples
 
 ### Props:
 
@@ -36,6 +40,25 @@ This component creates a View with an image as background. Accepts jpeg and png 
 | mask        | string                    | \_      | :x:                | This is a color with an alpha channel. It adds a mask over the background image |
 
 ## Button
+
+### Description:
+
+This is a clickable component and can execute functions passed as an argument (onPress). Accepts icons and texts as parameters.
+
+### Samples
+
+### Props:
+
+| Variable  | Value Type               | Default | Mandatory          | Notes                                                                      |
+| --------- | ------------------------ | ------- | ------------------ | -------------------------------------------------------------------------- |
+| tw        | Tailwind Function        | \_      | :heavy_check_mark: | \_                                                                         |
+| style     | Tailwind Style           | \_      | :x:                | This style is applied to the container View                                |
+| textStyle | Tailwind Style           | \_      | :x:                | This style is applied directly to the Text component                       |
+| children  | String                   | \_      | :x:                | The children props are limited to strings.                                 |
+| type      | 'primary' OR 'secondary' | \_      | :x:                | If defined applies the default primary or secondary colors as button color |
+| onPress   | () => void               | \_      | :heavy_check_mark: | Defines the function that will be executed when button pressed.            |
+| iconLeft  | SVG string               | \_      | :x:                | If defined will add an icon to the left of the text.                       |
+| iconRight | SVG string               | \_      | :x:                | If defined will add an icon to the right of the text.                      |
 
 ## Card
 

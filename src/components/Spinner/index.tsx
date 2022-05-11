@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {useEffect, useState} from 'react';
 import {Animated, Easing} from 'react-native';
 
 type Props = {
@@ -8,9 +7,9 @@ type Props = {
 };
 
 const Spinner = ({time, children}: Props): JSX.Element => {
-  const [spinValue] = useState(new Animated.Value(0));
+  const [spinValue] = React.useState(new Animated.Value(0));
 
-  useEffect(() => {
+  React.useEffect(() => {
     Animated.loop(
       Animated.timing(spinValue, {
         toValue: 1,

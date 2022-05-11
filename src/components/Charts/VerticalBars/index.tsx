@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import * as React from 'react';
 import {View, Text as TextNative} from 'react-native';
 import {TailwindFn} from 'twrnc';
 import {Style} from 'twrnc/dist/esm/types';
@@ -57,10 +57,10 @@ const VerticalBars = ({
   setBalloonData,
   notSelectedColor = '#D1D5DB',
 }: Props): JSX.Element => {
-  const [barWidth, setBarWidth] = useState(0);
-  const [scale, setScale] = useState(['0']);
-  const [unitaryHeight, setUnitaryHeight] = useState(0);
-  const [selectedColumn, setSelectedColumn] = useState('');
+  const [barWidth, setBarWidth] = React.useState(0);
+  const [scale, setScale] = React.useState(['0']);
+  const [unitaryHeight, setUnitaryHeight] = React.useState(0);
+  const [selectedColumn, setSelectedColumn] = React.useState('');
 
   const defaultStyles = tw`flex-1 font-inter font-medium text-base text-gray-500 items-center`;
   const chartDefaultStyles = tw``;
@@ -74,7 +74,7 @@ const VerticalBars = ({
   colorsArray = colorsArray.reverse();
 
   // Calculates the bar widths
-  useEffect(() => {
+  React.useEffect(() => {
     const valuesKeys = Object.keys(data.values);
     const numberOfColumns = valuesKeys.length;
 
@@ -85,7 +85,7 @@ const VerticalBars = ({
   }, [width, data]);
 
   // Calculates the scale of the graph
-  useEffect(() => {
+  React.useEffect(() => {
     const ceilNumber = Math.ceil(scaleSize / 10) * 10;
     const head = parseInt(`${ceilNumber}`.substring(0, 1), 10);
     const step = head <= 5 ? ceilNumber / head : (ceilNumber / 2) * head;
@@ -111,11 +111,11 @@ const VerticalBars = ({
   }, [scaleSize]);
 
   // Establishes the unitary height
-  useEffect(() => {
+  React.useEffect(() => {
     setUnitaryHeight(height / scaleSize);
   }, [height, scaleSize]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (selectedColumn && setBalloonData) {
       setBalloonData(selectedColumn);
       clearTimeout(selectionTimeout);

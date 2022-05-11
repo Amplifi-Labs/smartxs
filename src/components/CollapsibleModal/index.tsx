@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {useEffect, useState} from 'react';
 import {
   Animated,
   Dimensions,
@@ -36,22 +35,22 @@ const DraggableView = ({
 }: Props): JSX.Element => {
   let initialPosition = 0;
 
-  const [touched, setTouched] = useState(false);
+  const [touched, setTouched] = React.useState(false);
 
-  const [position, setPosition] = useState(
+  const [position, setPosition] = React.useState(
     show
       ? new Animated.Value(WINDOW_HEIGHT - maxHeight - iOSVerticalCompensation)
       : new Animated.Value(WINDOW_HEIGHT - iOSVerticalCompensation),
   );
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!initialPosition) {
       // eslint-disable-next-line react-hooks/exhaustive-deps
       initialPosition = WINDOW_HEIGHT - maxHeight - iOSVerticalCompensation;
     }
   }, []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (show) {
       setPosition(
         new Animated.Value(WINDOW_HEIGHT - maxHeight - iOSVerticalCompensation),

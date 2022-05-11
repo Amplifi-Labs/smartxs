@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import * as React from 'react';
 import {Text, TextInput, View} from 'react-native';
 import {SvgXml} from 'react-native-svg';
 import {Style} from 'twrnc/dist/esm/types';
@@ -43,7 +43,7 @@ const InputPassword: React.FC<Props> = ({
   error,
   errorStyle,
 }): JSX.Element => {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = React.useState(false);
 
   const defaultInputStyle = tw.style(
     'text-sm font-normal text-gray-500 bg-white p-3 rounded-md border-gray-300 border w-full',

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import * as React from 'react';
 import {
   LayoutChangeEvent,
   LayoutRectangle,
@@ -35,25 +35,23 @@ const SwipeCarousel = ({
   unselectedColor = '#9CA3AF',
   selectedCallback,
 }: Props) => {
-  const [position, setPosition] = useState(0);
+  const [position, setPosition] = React.useState(0);
 
-  const [layout, setLayout] = useState<LayoutRectangle>();
+  const [layout, setLayout] = React.useState<LayoutRectangle>();
 
-  const [selected_, setSelected_] = useState(selected);
+  const [selected_, setSelected_] = React.useState(selected);
 
-  const [initialized, setInitialized] = useState(false);
-
-  // const [previousPosition, setPreviousPosition] = useState(0);
+  const [initialized, setInitialized] = React.useState(false);
 
   const onLayout = (event: LayoutChangeEvent) => {
     setLayout(event.nativeEvent.layout);
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     setSelected_(selected);
   }, [selected]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (layout) {
       if (initialized) {
         startAnimation(selected_);

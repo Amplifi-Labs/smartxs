@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {SvgXml} from 'react-native-svg';
 
 type Props = {

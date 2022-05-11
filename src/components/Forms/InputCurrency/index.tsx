@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {useEffect, useState} from 'react';
 import {Text, TextInput, View} from 'react-native';
 import {Style} from 'twrnc/dist/esm/types';
 import currenciesArray from './currencies-table';
@@ -46,9 +45,9 @@ const InputCurrency = ({
   error,
   errorStyle,
 }: Props): JSX.Element => {
-  const [symbol, setSymbol] = useState('');
+  const [symbol, setSymbol] = React.useState('');
 
-  useEffect(() => {
+  React.useEffect(() => {
     const currencyObj = (currenciesArray as Currency[]).find(
       currency_ => currency_.abbreviation === currency,
     );
