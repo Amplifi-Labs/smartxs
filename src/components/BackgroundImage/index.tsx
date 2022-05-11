@@ -13,7 +13,7 @@ type Props = {
   tw: TailwindFn;
   image: ImageSourcePropType;
   style?: Style;
-  children?: React.ReactElement;
+  children?: JSX.Element | JSX.Element[];
   bottomColor?: string;
   mask?: string;
 };
