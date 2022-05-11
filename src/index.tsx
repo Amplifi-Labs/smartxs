@@ -13,7 +13,6 @@ import InputNumber from './components/Forms/InputNumber';
 import InputPassword from './components/Forms/InputPassword';
 import InputText from './components/Forms/InputText';
 
-import H1 from './components/H1';
 import HR from './components/HR';
 import Image from './components/Image';
 import Info from './components/Info';
@@ -22,6 +21,11 @@ import LoadingRound from './components/LoadingRound';
 import ProgressSteps from './components/ProgressSteps';
 import Spinner from './components/Spinner';
 import SwipeCarousel from './components/SwipeCarousel';
+
+/* Text */
+import H1 from './components/Text/H1';
+import H2 from './components/Text/H2';
+import H3 from './components/Text/H3';
 
 export {
   BackgroundImage,
@@ -34,6 +38,8 @@ export {
   InputPassword,
   InputText,
   H1,
+  H2,
+  H3,
   HR,
   Image,
   Info,
