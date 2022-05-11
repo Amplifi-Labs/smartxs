@@ -20,7 +20,9 @@ Key concepts of this library:
 
 ## BackgroundImage
 
-![BackgroundImage image sample](https://raw.githubusercontent.com/Amplifi-Labs/smartxs/master/files/BackgroundImage.png)
+### Description:
+
+This component creates a View with an image as background. Accepts jpeg and png files.
 
 ### Props:
 
@@ -74,3 +76,5 @@ Key concepts of this library:
 ### Amplifi Labs
 
 This library is being developed by Amplifi Labs. To know more about our company, please, access our [website](https://www.amplifilabs.com).
+
+![Amplifi Labs Logo](https://raw.githubusercontent.com/Amplifi-Labs/smartxs/master/files/Amplifi-Labs-Logo.png)
