@@ -1,27 +1,45 @@
 import BackgroundImage from './components/BackgroundImage';
 import Button from './components/Button';
-import DraggableView from './components/DraggableView';
+import Card from './components/Card';
+
+/* Charts */
+import VerticalBars from './components/Charts/VerticalBars';
+
+import CollapsibleModal from './components/CollapsibleModal';
+
+/* Forms */
+import InputCurrency from './components/Forms/InputCurrency';
+import InputNumber from './components/Forms/InputNumber';
+import InputPassword from './components/Forms/InputPassword';
+import InputText from './components/Forms/InputText';
+
 import H1 from './components/H1';
+import HR from './components/HR';
 import Image from './components/Image';
 import Info from './components/Info';
-import InputCurrency from './components/InputCurrency';
-import InputText from './components/InputText';
+import Label from './components/Label';
 import LoadingRound from './components/LoadingRound';
-import PasswordInput from './components/PasswordInput';
 import ProgressSteps from './components/ProgressSteps';
 import Spinner from './components/Spinner';
+import SwipeCarousel from './components/SwipeCarousel';
 
 export {
   BackgroundImage,
   Button,
-  DraggableView,
+  Card,
+  VerticalBars,
+  CollapsibleModal,
+  InputCurrency,
+  InputNumber,
+  InputPassword,
+  InputText,
   H1,
+  HR,
   Image,
   Info,
-  InputCurrency,
-  InputText,
+  Label,
   LoadingRound,
-  PasswordInput,
   ProgressSteps,
   Spinner,
+  SwipeCarousel,
 };

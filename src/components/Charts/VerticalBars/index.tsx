@@ -1,37 +1,45 @@
-import React from 'react';
-import {View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {View, Text as TextNative} from 'react-native';
 import {TailwindFn} from 'twrnc';
 import {Style} from 'twrnc/dist/esm/types';
 
-import Svg, {
-  G,
-  Rect,
-  Circle,
-  Ellipse,
-  Text,
-  TSpan,
-  Path,
-} from 'react-native-svg';
+import Svg, {G, Rect, Text, SvgXml} from 'react-native-svg';
+
+import CircleSvg from './icons/circle';
+import Balloon, {BalloonData} from './Balloon';
 
 const defaultColorsArray = ['#34D399', '#38BDF8', '#A78BFA'];
 
-type Data = {
-  label: string;
-  values: number | {[key: string]: number};
-  type: 'currency';
-  currencyType?: 'USD';
+type Value = {
+  [key: string]: {amount: number; transactions: number};
+};
+
+type Values = {
+  [key: string]: Value;
+};
+
+export type Data = {
+  values: Values;
 };
 
 type Props = {
   tw: TailwindFn;
-  data: Data[];
-  colorsArray: string[];
+  data: Data;
+  colorsArray?: string[];
   style?: Style;
   labelingStyle?: Style;
   chartStyle?: Style;
-  chartWidth: number;
-  chartHeight: number;
+  width: number;
+  height: number;
+  scaleSize: number;
+  showLabels?: boolean;
+  fontColor?: string;
+  balloonData?: BalloonData;
+  setBalloonData?: (valueId?: string | undefined) => void;
+  notSelectedColor?: string;
 };
+
+let selectionTimeout: NodeJS.Timeout;
 
 const VerticalBars = ({
   tw,
@@ -39,93 +47,181 @@ const VerticalBars = ({
   colorsArray = defaultColorsArray,
   style,
   labelingStyle,
-  chartStyle,
-  chartWidth,
-  chartHeight,
+  // chartStyle,
+  width,
+  height,
+  scaleSize,
+  showLabels = true,
+  fontColor = '#000000',
+  balloonData,
+  setBalloonData,
+  notSelectedColor = '#D1D5DB',
 }: Props): JSX.Element => {
-  const defaultStyles = tw`font-inter font-medium text-base text-gray-500`;
-  const labelingDefaultStyles = tw`h-12`;
+  const [barWidth, setBarWidth] = useState(0);
+  const [scale, setScale] = useState(['0']);
+  const [unitaryHeight, setUnitaryHeight] = useState(0);
+  const [selectedColumn, setSelectedColumn] = useState('');
+
+  const defaultStyles = tw`flex-1 font-inter font-medium text-base text-gray-500 items-center`;
   const chartDefaultStyles = tw``;
 
-  const barWidth = 27;
-  const unitaryHeight = 0.5;
-  const spaceBetween = (chartWidth - 6 * barWidth) / 9;
-  const graphHeight = 150;
-  const bottomGap = 30;
+  const spaceBetween = 10;
+  const labelHeight = 24;
+  const scaleWidth = 50;
 
-  let dx = 2 * spaceBetween;
+  let dx = scaleWidth;
+
+  colorsArray = colorsArray.reverse();
+
+  // Calculates the bar widths
+  useEffect(() => {
+    const valuesKeys = Object.keys(data.values);
+    const numberOfColumns = valuesKeys.length;
+
+    setBarWidth(
+      (width - scaleWidth - (numberOfColumns - 1) * spaceBetween) /
+        numberOfColumns,
+    );
+  }, [width, data]);
+
+  // Calculates the scale of the graph
+  useEffect(() => {
+    const ceilNumber = Math.ceil(scaleSize / 10) * 10;
+    const head = parseInt(`${ceilNumber}`.substring(0, 1), 10);
+    const step = head <= 5 ? ceilNumber / head : (ceilNumber / 2) * head;
+
+    let suffix = '';
+    let divisor = 1;
+    if (Math.floor(step / 1000000)) {
+      suffix = 'M';
+      divisor = 1000000;
+    } else if (Math.floor(step / 1000)) {
+      suffix = 'k';
+      divisor = 1000;
+    }
+
+    const newScale = [];
+
+    const numberOfLabels = ceilNumber / step;
+    for (let i = 0; i < numberOfLabels; i += 1) {
+      newScale.push(`${(i * step) / divisor}${suffix}`);
+    }
+
+    setScale(newScale);
+  }, [scaleSize]);
+
+  // Establishes the unitary height
+  useEffect(() => {
+    setUnitaryHeight(height / scaleSize);
+  }, [height, scaleSize]);
+
+  useEffect(() => {
+    if (selectedColumn && setBalloonData) {
+      setBalloonData(selectedColumn);
+      clearTimeout(selectionTimeout);
+
+      selectionTimeout = setTimeout(() => {
+        setSelectedColumn('');
+        setBalloonData();
+      }, 5000);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedColumn]);
 
   return (
     <View style={{...defaultStyles, ...style}}>
-      {/* Chart */}
-      <View style={{...labelingDefaultStyles, ...labelingStyle}}>
-        {/* Draws the SVG*/}
-        <Svg
-          width={chartWidth}
-          height={chartHeight}
-          viewBox={`0 0 ${chartWidth} ${chartHeight}`}>
-          {/* Draw columns */}
-          {data.map((record, idx) => {
-            dx = idx > 0 ? dx + (barWidth + spaceBetween) : dx;
-
-            if (typeof record.values === 'number') {
-              const barHeight = unitaryHeight * record.values;
-              return <G key={idx}></G>;
-            } else if (typeof record.values === 'object') {
-              return <G key={idx}></G>;
-            }
-          })}
-        </Svg>
-        {/*
-        <svg xmlns="http://www.w3.org/2000/svg" width={width} height={graphHeight} version="1.1">
-          {Object.keys(numberOfMatches).map((matchKey, i) => {
-            const match = numberOfMatches[matchKey];
-
-            dx = i > 0 ? dx + (barWidth+spaceBetween) : dx;
-
-            const barHeight = unitaryHeight*match;
-
-            const radius = 4;
-
-            const opacity = i < 4 ? "4D" : (i === 4 ? "99" : (i === 5 ? "CC" : ""));
-
-            return(
-              <g key={i}>
-                <path
-                  d={`
-                    M ${0+dx} ${graphHeight-bottomGap}
-                    L ${0+dx} ${graphHeight-barHeight+radius-bottomGap}
-                    C ${1+dx} ${graphHeight-barHeight+2.267948-bottomGap} ${2.267948+dx} ${graphHeight-barHeight+1-bottomGap} ${radius+dx} ${graphHeight-barHeight-bottomGap}
-                    L ${23+dx} ${graphHeight-barHeight-bottomGap}
-                    C ${25.267948+dx} ${graphHeight-barHeight+1-bottomGap} ${26+dx} ${graphHeight-barHeight+2.267948-bottomGap} ${27+dx} ${graphHeight-barHeight+radius-bottomGap}
-                    L ${27+dx} ${graphHeight-bottomGap}
-                    Z
-                  `}
-                  fill={`#7DCA61${opacity}`}
-                />
-                <text
-                  x={0+dx+(barWidth/2-4)}
-                  y={graphHeight-barHeight-5-bottomGap}
-                  className=" font-inter font-medium text-xs"
-                >
-                  {match}
-                </text>
-                <text
-                  x={0+dx+(barWidth/2-12)}
-                  y={graphHeight-10}
-                  className=" font-inter font-medium text-xs"
-                >
-                  {matchKey}
-                </text>
-              </g>
+      {/* Chart - Draws the SVG */}
+      <View style={{...chartDefaultStyles}}>
+        <Svg width={width} height={height}>
+          {scale.map((label, idx) => {
+            return (
+              <Text
+                key={idx}
+                x={0}
+                y={height - labelHeight - idx * (height / scale.length)}
+                fontSize="12"
+                fill={fontColor}>
+                {`$${label}`}
+              </Text>
             );
           })}
-          <line x1="0" y1={graphHeight-bottomGap} x2={width} y2={graphHeight-bottomGap} stroke="black" />
-        </svg>
-        */}
+          {Object.keys(data.values).map((key_, idx) => {
+            const record = data.values[key_];
+            dx = idx > 0 ? dx + (barWidth + spaceBetween) : dx;
+
+            let sum = 0;
+            const l = Object.keys(record);
+            for (let i = 0; i < l.length; i += 1) {
+              sum += record[l[i]].amount;
+            }
+
+            let dy = height - labelHeight - sum * unitaryHeight;
+
+            return (
+              <G key={idx} onPress={() => setSelectedColumn(key_)}>
+                {l.reverse().map((_, idx2: number) => {
+                  const originalDy = dy;
+                  const barHeight = unitaryHeight * record[l[idx2]].amount;
+                  dy = dy + barHeight;
+                  return (
+                    <Rect
+                      key={idx2}
+                      x={dx}
+                      y={originalDy}
+                      width={barWidth}
+                      height={barHeight}
+                      fill={
+                        !selectedColumn
+                          ? colorsArray[idx2]
+                          : selectedColumn === key_
+                          ? colorsArray[idx2]
+                          : notSelectedColor
+                      }
+                    />
+                  );
+                })}
+                <Text
+                  x={dx + barWidth / 2 - 8}
+                  y={height}
+                  fontSize="16"
+                  fill={fontColor}>
+                  {key_}
+                </Text>
+              </G>
+            );
+          })}
+        </Svg>
       </View>
-      {/* Labels */}
-      <View style={{...chartDefaultStyles, ...chartStyle}}></View>
+      {showLabels && (
+        <View style={tw`flex-row my-2 justify-between w-9/12 mt-4`}>
+          {Object.keys(data.values[Object.keys(data.values)[0]]).map(
+            (valueKey: string, idx: number) => {
+              return (
+                <View key={idx} style={tw`flex-row items-center`}>
+                  <SvgXml
+                    xml={CircleSvg({color: colorsArray.reverse()[idx]})}
+                    width={8}
+                  />
+                  <TextNative
+                    style={{
+                      ...tw`ml-1 text-[${fontColor}]`,
+                      ...labelingStyle,
+                    }}>
+                    {valueKey}
+                  </TextNative>
+                </View>
+              );
+            },
+          )}
+        </View>
+      )}
+      {!!selectedColumn && balloonData && (
+        <Balloon
+          tw={tw}
+          balloonData={balloonData}
+          position={[width / 2, height / 2]}
+        />
+      )}
     </View>
   );
 };

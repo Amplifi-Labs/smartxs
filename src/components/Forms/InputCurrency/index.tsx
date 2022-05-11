@@ -25,6 +25,8 @@ type Props = {
   inputType?: 'primary' | 'secondary';
   helperType?: 'primary' | 'secondary';
   currency?: 'USD';
+  error?: string;
+  errorStyle?: Style;
 };
 
 const InputCurrency = ({
@@ -41,6 +43,8 @@ const InputCurrency = ({
   inputType,
   helperType,
   currency = 'USD',
+  error,
+  errorStyle,
 }: Props): JSX.Element => {
   const [symbol, setSymbol] = useState('');
 
@@ -53,13 +57,12 @@ const InputCurrency = ({
     }
   }, [currency]);
 
-  const defaultLabelStyle = tw.style('font-sm font-medium text-gray-700 pb-1x');
+  const defaultLabelStyle = tw.style('text-sm font-medium text-gray-700 pb-1x');
   const defaultInputStyle = tw.style(
-    'font-sm font-normal text-gray-500 bg-white p-3 rounded-md border-gray-300 border w-full flex-row',
+    'text-sm font-normal text-gray-500 bg-white p-3 rounded-md border-gray-300 border w-full flex-row',
   );
-  const defaultHelperStyle = tw.style(
-    /* font-xs */ 'font-normal text-gray-500 pt-1',
-  );
+  const defaultHelperStyle = tw.style('text-xs font-normal text-gray-500 pt-1');
+  const defaultErrorStyle = tw.style('text-xs font-normal text-red-500 pt-1');
 
   const typeInputStyle = inputType
     ? tw`border-${inputType}-700 ${
@@ -79,19 +82,24 @@ const InputCurrency = ({
           <View style={tw`flex-row`}>
             <Text style={tw`pr-2 text-gray-500`}>{symbol}</Text>
             <TextInput
+              style={tw`w-8/10`}
               onChangeText={onChangeText}
               value={value || undefined}
               placeholder={placeholder?.toString() || undefined}
+              keyboardType="numeric"
             />
           </View>
           <Text style={tw`pl-2 text-gray-500`}>{currency}</Text>
         </View>
       </View>
-      {helper && (
+      {helper && !error && (
         <Text
           style={{...defaultHelperStyle, ...typeHelperStyle, ...helperStyle}}>
           {helper}
         </Text>
+      )}
+      {error && (
+        <Text style={{...defaultErrorStyle, ...errorStyle}}>{error}</Text>
       )}
     </View>
   );

@@ -14,7 +14,7 @@ type Props = {
 };
 
 const Info = ({tw, steps, current, style}: Props): JSX.Element => {
-  const defaultStyles = tw``;
+  const defaultStyles = tw`h-1`;
 
   const [svg, setSvg] =
     useState(`<svg width="39" height="4" viewBox="0 0 39 4" fill="none" xmlns="http://www.w3.org/2000/svg">

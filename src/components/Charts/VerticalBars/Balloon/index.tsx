@@ -2,41 +2,39 @@ import React from 'react';
 import {View, Text} from 'react-native';
 import {Style, TailwindFn} from 'twrnc/dist/esm/types';
 
+export type BalloonData = {title: string; value: string | number}[];
+
 type Props = {
   tw: TailwindFn;
-  transactions: number;
-  amount: number;
-  currencySymbol: string;
+  balloonData: {title: string; value: string | number}[];
   position: [number, number];
   style?: Style;
   fontStyle?: Style;
 };
 
-const Balloon = ({
-  tw,
-  transactions,
-  amount,
-  currencySymbol,
-  position,
-  style,
-  fontStyle,
-}: Props) => {
-  const defaultStyle = tw`p-1 bg-gray-600 rounded-md absolute`;
-  const defaultFontStyle = tw`font-inter text-xs `;
+const Balloon = ({tw, balloonData, position, style, fontStyle}: Props) => {
+  const defaultStyle = tw`p-2 bg-gray-600 rounded-md absolute`;
+  const defaultFontStyle = tw`font-inter text-xs text-white`;
 
-  return (
-    <View
-      style={{...defaultStyle, ...style, top: position[0], left: position[1]}}>
-      <Text style={{...defaultFontStyle, ...fontStyle}}>
-        Transactions: {transactions}
-      </Text>
-      <Text
+  if (balloonData.length) {
+    return (
+      <View
         style={{
-          ...defaultFontStyle,
-          ...fontStyle,
-        }}>{`Amount: ${currencySymbol}${amount}`}</Text>
-    </View>
-  );
+          ...defaultStyle,
+          ...style,
+          left: position[0],
+          top: position[1],
+        }}>
+        {balloonData.map((data, idx) => (
+          <Text key={idx} style={{...defaultFontStyle, ...fontStyle}}>
+            {`${data.title}: ${data.value}`}
+          </Text>
+        ))}
+      </View>
+    );
+  }
+
+  return null;
 };
 
 export default Balloon;

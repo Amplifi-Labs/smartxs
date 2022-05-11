@@ -7,10 +7,12 @@ import {
 } from 'react-native';
 
 import {TailwindFn} from 'twrnc';
+import {Style} from 'twrnc/dist/esm/types';
 
 type Props = {
   tw: TailwindFn;
   image: ImageSourcePropType;
+  style?: Style;
   children?: React.ReactElement;
   bottomColor?: string;
   mask?: string;
@@ -22,10 +24,16 @@ const BackgroundImage = ({
   children,
   bottomColor,
   mask = 'bg-white/90',
+  style,
 }: Props): JSX.Element => {
+  const defaultStyle = tw`flex-1`;
+
   return (
     <View style={tw`flex-1`}>
-      <ImageBackground source={image} resizeMode="cover" style={tw`flex-1`}>
+      <ImageBackground
+        source={image}
+        resizeMode="cover"
+        style={{...defaultStyle, ...style}}>
         <SafeAreaView style={tw`flex-1 justify-between ${mask}`}>
           {children}
         </SafeAreaView>
