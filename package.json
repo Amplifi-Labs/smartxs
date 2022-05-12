@@ -1,6 +1,6 @@
 {
   "name": "@amplifi-labs/smartxs",
-  "version": "0.0.45",
+  "version": "0.0.46",
   "description": "Tailwind based react native package",
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
