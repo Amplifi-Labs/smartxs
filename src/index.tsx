@@ -28,6 +28,10 @@ import Paragraph from './components/Text/Paragraph';
 import Label from './components/Text/Label';
 import Info from './components/Text/Info';
 
+import Checkbox from './components/Checkbox';
+import NotificationBadge from './components/NotificationBadge';
+import RoundAvatar from './components/RoundAvatar';
+
 export {
   BackgroundImage,
   Button,
@@ -50,4 +54,7 @@ export {
   ProgressSteps,
   Spinner,
   SwipeCarousel,
+  Checkbox,
+  NotificationBadge,
+  RoundAvatar,
 };
