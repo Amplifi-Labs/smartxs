@@ -24,7 +24,14 @@ const Image = ({tw, svg, src, style, width, height}: Props): JSX.Element => {
   }
 
   if (src) {
-    return <Image_ style={{...defaultStyles, ...style}} source={src} />;
+    return (
+      <Image_
+        style={{...defaultStyles, ...style}}
+        width={width || undefined}
+        height={height || undefined}
+        source={src}
+      />
+    );
   }
 
   return <View />;
