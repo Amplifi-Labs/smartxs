@@ -48,14 +48,16 @@ const InputPassword: React.FC<Props> = ({
   const [visible, setVisible] = React.useState(false);
 
   const defaultInputStyle = tw.style(
-    'text-sm font-normal text-gray-500 bg-white p-3 rounded-md border-gray-300 border w-full',
+    'text-sm font-normal text-gray-500 p-3 bg-white rounded-md border-gray-300 border w-full',
   );
 
-  const defaultLabelStyle = tw.style('text-sm font-medium text-gray-700 pb-1x');
+  const defaultLabelStyle = tw.style('text-sm font-medium text-gray-700 pb-1');
 
   const defaultHelperStyle = tw.style('text-xs font-normal text-gray-500 pt-1');
   const defaultErrorStyle = tw.style('text-xs font-normal text-red-500 pt-1');
-  const defaultIconStyle = tw.style('justify-center');
+  const defaultIconStyle = tw.style(
+    'justify-center absolute top-0 right-0 h-full w-8',
+  );
 
   const typeInputStyle = inputType
     ? tw`border-${inputType}-700 ${
@@ -70,21 +72,20 @@ const InputPassword: React.FC<Props> = ({
       {label && (
         <Text style={{...defaultLabelStyle, ...labelStyle}}>{label}</Text>
       )}
-      <View style={{...defaultInputStyle, ...typeInputStyle, ...inputStyle}}>
-        <View style={tw`flex-row justify-between flex-grow`}>
-          <TextInput
-            style={tw`w-9/10`}
-            onChangeText={onChangeText}
-            value={value || undefined}
-            placeholder={placeholder?.toString() || undefined}
-            secureTextEntry={!visible}
+      <View>
+        <TextInput
+          style={{...defaultInputStyle, ...typeInputStyle, ...inputStyle}}
+          // style={tw``}
+          onChangeText={onChangeText}
+          value={value || undefined}
+          placeholder={placeholder?.toString() || undefined}
+          secureTextEntry={!visible}
+        />
+        <View style={{...defaultIconStyle, ...iconStyle}}>
+          <SvgXml
+            xml={visible ? visibleIcon : invisibleIcon}
+            onPress={() => setVisible(!visible)}
           />
-          <View style={{...defaultIconStyle, ...iconStyle}}>
-            <SvgXml
-              xml={visible ? visibleIcon : invisibleIcon}
-              onPress={() => setVisible(!visible)}
-            />
-          </View>
         </View>
       </View>
       {helper && !error && (

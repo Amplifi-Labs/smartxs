@@ -39,7 +39,7 @@ const InputText = ({
 }: Props): JSX.Element => {
   const defaultLabelStyle = tw.style('text-sm font-medium text-gray-700');
   const defaultInputStyle = tw.style(
-    'text-sm font-normal text-gray-500 bg-white p-3 rounded-md border-gray-300 border w-full justify-center',
+    'text-sm font-normal text-gray-500 p-3 bg-white rounded-md border-gray-300 border',
   );
   const defaultHelperStyle = tw.style('text-xs font-normal text-gray-500 pt-1');
   const defaultErrorStyle = tw.style('text-xs font-normal text-red-500 pt-1');
@@ -57,14 +57,12 @@ const InputText = ({
       {label && (
         <Text style={{...defaultLabelStyle, ...labelStyle}}>{label}</Text>
       )}
-      <View style={{...defaultInputStyle, ...typeInputStyle, ...inputStyle}}>
-        <TextInput
-          style={{...defaultInputStyle, ...typeInputStyle, ...inputStyle}}
-          onChangeText={onChangeText}
-          value={value || undefined}
-          placeholder={placeholder || undefined}
-        />
-      </View>
+      <TextInput
+        style={{...defaultInputStyle, ...typeInputStyle, ...inputStyle}}
+        onChangeText={onChangeText}
+        value={value || undefined}
+        placeholder={placeholder || undefined}
+      />
       {helper && !error && (
         <Text
           style={{...defaultHelperStyle, ...typeHelperStyle, ...helperStyle}}>
