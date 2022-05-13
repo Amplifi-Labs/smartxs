@@ -57,12 +57,13 @@ const InputText = ({
       {label && (
         <Text style={{...defaultLabelStyle, ...labelStyle}}>{label}</Text>
       )}
-      <TextInput
-        style={{...defaultInputStyle, ...typeInputStyle, ...inputStyle}}
-        onChangeText={onChangeText}
-        value={value || undefined}
-        placeholder={placeholder || undefined}
-      />
+      <View style={{...defaultInputStyle, ...typeInputStyle, ...inputStyle}}>
+        <TextInput
+          onChangeText={onChangeText}
+          value={value || undefined}
+          placeholder={placeholder || undefined}
+        />
+      </View>
       {helper && !error && (
         <Text
           style={{...defaultHelperStyle, ...typeHelperStyle, ...helperStyle}}>
