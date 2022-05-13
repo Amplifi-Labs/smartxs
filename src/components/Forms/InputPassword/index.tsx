@@ -55,6 +55,7 @@ const InputPassword: React.FC<Props> = ({
 
   const defaultHelperStyle = tw.style('text-xs font-normal text-gray-500 pt-1');
   const defaultErrorStyle = tw.style('text-xs font-normal text-red-500 pt-1');
+  const defaultIconStyle = tw.style('justify-center');
 
   const typeInputStyle = inputType
     ? tw`border-${inputType}-700 ${
@@ -78,7 +79,7 @@ const InputPassword: React.FC<Props> = ({
             placeholder={placeholder?.toString() || undefined}
             secureTextEntry={!visible}
           />
-          <View style={{...tw``, ...iconStyle}}>
+          <View style={{...defaultIconStyle, ...iconStyle}}>
             <SvgXml
               xml={visible ? visibleIcon : invisibleIcon}
               onPress={() => setVisible(!visible)}
