@@ -15,6 +15,7 @@ type Props = {
   inputStyle?: Style;
   textInputStyle?: Style;
   helperStyle?: Style;
+  iconStyle?: Style;
   onChangeText: React.Dispatch<React.SetStateAction<string>>;
   value: string;
   inputType?: 'primary' | 'secondary';
@@ -34,6 +35,7 @@ const InputPassword: React.FC<Props> = ({
   labelStyle,
   inputStyle,
   helperStyle,
+  iconStyle,
   onChangeText,
   value,
   inputType,
@@ -76,10 +78,12 @@ const InputPassword: React.FC<Props> = ({
             placeholder={placeholder?.toString() || undefined}
             secureTextEntry={!visible}
           />
-          <SvgXml
-            xml={visible ? visibleIcon : invisibleIcon}
-            onPress={() => setVisible(!visible)}
-          />
+          <View style={{...tw``, ...iconStyle}}>
+            <SvgXml
+              xml={visible ? visibleIcon : invisibleIcon}
+              onPress={() => setVisible(!visible)}
+            />
+          </View>
         </View>
       </View>
       {helper && !error && (
