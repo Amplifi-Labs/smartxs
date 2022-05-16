@@ -8,7 +8,6 @@ import VerticalBars from './components/Charts/VerticalBars';
 import CollapsibleModal from './components/CollapsibleModal';
 
 /* Forms */
-import InputCurrency from './components/Forms/InputCurrency';
 import InputNumber from './components/Forms/InputNumber';
 import InputPassword from './components/Forms/InputPassword';
 import InputText from './components/Forms/InputText';
@@ -38,7 +37,6 @@ export {
   Card,
   VerticalBars,
   CollapsibleModal,
-  InputCurrency,
   InputNumber,
   InputPassword,
   InputText,

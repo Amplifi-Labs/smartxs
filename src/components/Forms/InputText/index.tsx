@@ -1,8 +1,12 @@
 import * as React from 'react';
-import {Text, TextInput, View} from 'react-native';
+import {KeyboardTypeOptions, Text, View} from 'react-native';
 import {Style} from 'twrnc/dist/esm/types';
+import {SvgXml} from 'react-native-svg';
 
 import {TailwindFn} from 'twrnc';
+
+import InputMask from '../masks/InputMask';
+import type {MaskInputProps} from '../masks/InputMask.types';
 
 type Props = {
   tw: TailwindFn;
@@ -12,6 +16,7 @@ type Props = {
   style?: Style;
   labelStyle?: Style;
   inputStyle?: Style;
+  iconStyle?: Style;
   helperStyle?: Style;
   onChangeText: React.Dispatch<React.SetStateAction<string>>;
   value: string;
@@ -19,7 +24,9 @@ type Props = {
   helperType?: 'primary' | 'secondary';
   error?: string;
   errorStyle?: Style;
-};
+  icon?: string;
+  keyboardType?: KeyboardTypeOptions;
+} & MaskInputProps;
 
 const InputText = ({
   tw,
@@ -29,6 +36,7 @@ const InputText = ({
   style,
   labelStyle,
   inputStyle,
+  iconStyle,
   helperStyle,
   onChangeText,
   value,
@@ -36,10 +44,19 @@ const InputText = ({
   helperType,
   error,
   errorStyle,
+  icon,
+  keyboardType = 'default',
+  mask,
+  showObfuscatedValue,
+  placeholderFillCharacter,
+  obfuscationCharacter,
 }: Props): JSX.Element => {
   const defaultLabelStyle = tw.style('text-sm font-medium text-gray-700');
   const defaultInputStyle = tw.style(
     'text-sm font-normal text-gray-500 p-3 bg-white rounded-md border-gray-300 border',
+  );
+  const defaultIconStyle = tw.style(
+    'justify-center absolute top-0 right-0 h-full w-8',
   );
   const defaultHelperStyle = tw.style('text-xs font-normal text-gray-500 pt-1');
   const defaultErrorStyle = tw.style('text-xs font-normal text-red-500 pt-1');
@@ -57,12 +74,24 @@ const InputText = ({
       {label && (
         <Text style={{...defaultLabelStyle, ...labelStyle}}>{label}</Text>
       )}
-      <TextInput
-        style={{...defaultInputStyle, ...typeInputStyle, ...inputStyle}}
-        onChangeText={onChangeText}
-        value={value || undefined}
-        placeholder={placeholder || undefined}
-      />
+      <View>
+        <InputMask
+          style={{...defaultInputStyle, ...typeInputStyle, ...inputStyle}}
+          onChangeText={onChangeText}
+          value={value || undefined}
+          placeholder={placeholder || undefined}
+          keyboardType={keyboardType}
+          mask={mask}
+          showObfuscatedValue={showObfuscatedValue}
+          placeholderFillCharacter={placeholderFillCharacter}
+          obfuscationCharacter={obfuscationCharacter}
+        />
+        {icon && (
+          <View style={{...defaultIconStyle, ...iconStyle}}>
+            <SvgXml xml={icon} />
+          </View>
+        )}
+      </View>
       {helper && !error && (
         <Text
           style={{...defaultHelperStyle, ...typeHelperStyle, ...helperStyle}}>
