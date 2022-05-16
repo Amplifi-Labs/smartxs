@@ -1,4 +1,7 @@
-node_modules
+smartxs-components/node_modules
+smartxs-magazine/node_modules
+smartxs-playground/node_modules
+
 package
 .cache
 .DS_STORE

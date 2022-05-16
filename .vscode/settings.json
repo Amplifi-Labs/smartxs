@@ -1,12 +1,5 @@
 {
-  "cSpell.words": [
-    "Amplifi",
-    "Pressable",
-    "signup",
-    "smartxs",
-    "twrnc",
-    "zipcode"
-  ],
+  "cSpell.words": ["smartxs", "twrnc"],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
