@@ -1,6 +1,6 @@
 {
   "name": "@amplifi-labs/smartxs",
-  "version": "0.0.57",
+  "version": "0.0.60",
   "description": "Tailwind based react native package",
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
@@ -21,7 +21,7 @@
   ],
   "author": "Amplifi Labs",
   "license": "MIT",
-  "peerDependencies": {
+  "dependencies": {
     "react": "17.0.2",
     "react-native": "0.67.4",
     "react-native-svg": "12.3.0",
