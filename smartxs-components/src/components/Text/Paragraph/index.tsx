@@ -11,7 +11,7 @@ type Props = {
 };
 
 const Paragraph = ({tw, style, children}: Props): JSX.Element => {
-  const defaultStyles = tw`font-inter font-medium text-sm text-gray-700`;
+  const defaultStyles = tw`font-medium text-sm text-gray-700`;
   return <Text style={{...defaultStyles, ...style}}>{children}</Text>;
 };
 

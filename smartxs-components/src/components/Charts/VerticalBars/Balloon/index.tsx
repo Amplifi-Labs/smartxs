@@ -14,7 +14,7 @@ type Props = {
 
 const Balloon = ({tw, balloonData, position, style, fontStyle}: Props) => {
   const defaultStyle = tw`p-2 bg-gray-600 rounded-md absolute`;
-  const defaultFontStyle = tw`font-inter text-xs text-white`;
+  const defaultFontStyle = tw`text-xs text-white`;
 
   if (balloonData.length) {
     return (

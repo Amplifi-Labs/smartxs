@@ -7,7 +7,7 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     fontFamily: {
-      inter: ['Inter', 'sans-serif'],
+      // inter: ['Inter', 'sans-serif'],
     },
     extend: {
       fontSize: {
@@ -23,7 +23,7 @@ module.exports = {
     },
   },
   fontFamily: {
-    inter: ['Inter', 'sans-serif'],
+    // inter: ['Inter', 'sans-serif'],
   },
   variants: {
     extend: {},

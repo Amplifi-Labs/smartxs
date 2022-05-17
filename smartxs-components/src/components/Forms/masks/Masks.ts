@@ -81,4 +81,4 @@ const CREDIT_CARD = [
   /\d/,
 ] as MaskArray;
 
-export {PHONE_NUMBER, CURRENCY, CREDIT_CARD};
+export default {PHONE_NUMBER, CURRENCY, CREDIT_CARD};

@@ -7,3 +7,8 @@ package
 .DS_STORE
 
 lib
+
+smartxs-components/yarn.lock
+smartxs-playground/yarn.lock
+
+smartxs-components/package-lock.json

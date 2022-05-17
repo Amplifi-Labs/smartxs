@@ -31,6 +31,9 @@ import Info from './components/Text/Info';
 import NotificationBadge from './components/NotificationBadge';
 import RoundAvatar from './components/RoundAvatar';
 
+/* Masks */
+import Masks from './components/Forms/masks/Masks';
+
 export {
   BackgroundImage,
   Button,
@@ -55,4 +58,5 @@ export {
   Checkbox,
   NotificationBadge,
   RoundAvatar,
+  Masks,
 };

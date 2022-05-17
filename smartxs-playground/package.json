@@ -12,10 +12,10 @@
   "dependencies": {
     "react": "17.0.2",
     "react-native": "0.68.2",
-    "twrnc": "^3.3.2"
+    "twrnc": "3.3.2"
   },
   "devDependencies": {
-    "@amplifi-labs/smartxs": "../smartxs-components",
+    "@amplifi-labs/smartxs": "file:../smartxs-components",
     "@babel/core": "^7.12.9",
     "@babel/runtime": "^7.12.5",
     "@react-native-community/eslint-config": "^2.0.0",

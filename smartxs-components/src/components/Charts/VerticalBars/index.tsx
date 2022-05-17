@@ -62,7 +62,7 @@ const VerticalBars = ({
   const [unitaryHeight, setUnitaryHeight] = React.useState(0);
   const [selectedColumn, setSelectedColumn] = React.useState('');
 
-  const defaultStyles = tw`flex-1 font-inter font-medium text-base text-gray-500 items-center`;
+  const defaultStyles = tw`flex-1 font-medium text-base text-gray-500 items-center`;
   const chartDefaultStyles = tw``;
 
   const spaceBetween = 10;
