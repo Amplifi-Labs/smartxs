@@ -5,7 +5,7 @@ import {Style} from 'twrnc/dist/esm/types';
 
 type Props = {
   tw: TailwindFn;
-  style: Style;
+  style?: Style;
   children: JSX.Element | JSX.Element[];
 };
 

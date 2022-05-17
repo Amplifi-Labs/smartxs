@@ -11,6 +11,7 @@ import CollapsibleModal from './components/CollapsibleModal';
 import InputNumber from './components/Forms/InputNumber';
 import InputPassword from './components/Forms/InputPassword';
 import InputText from './components/Forms/InputText';
+import Checkbox from './components/Forms/Checkbox';
 
 import HR from './components/HR';
 import Image from './components/Image';
@@ -27,7 +28,6 @@ import Paragraph from './components/Text/Paragraph';
 import Label from './components/Text/Label';
 import Info from './components/Text/Info';
 
-import Checkbox from './components/Checkbox';
 import NotificationBadge from './components/NotificationBadge';
 import RoundAvatar from './components/RoundAvatar';
 
