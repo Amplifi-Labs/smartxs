@@ -8,6 +8,7 @@ package
 
 lib
 
+yarn.lock
 smartxs-components/yarn.lock
 smartxs-playground/yarn.lock
 
