@@ -35,6 +35,7 @@ import RoundAvatar from './components/RoundAvatar';
 import Masks from './components/Forms/masks/Masks';
 
 import ToggleButton from './components/ToggleButton';
+import RadioGroup from './components/RadioGroup';
 
 export {
   BackgroundImage,
@@ -62,4 +63,5 @@ export {
   RoundAvatar,
   Masks,
   ToggleButton,
+  RadioGroup,
 };

@@ -17,7 +17,7 @@ type Props = {
   animatedValue?: Animated.Value;
 };
 
-const ButtonToggle = ({
+const ToggleButton = ({
   animatedValue = new Animated.Value(0),
   tw,
   onColor = '#0369A1',
@@ -69,4 +69,4 @@ const ButtonToggle = ({
   );
 };
 
-export default ButtonToggle;
+export default ToggleButton;
