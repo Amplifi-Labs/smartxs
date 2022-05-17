@@ -34,6 +34,8 @@ import RoundAvatar from './components/RoundAvatar';
 /* Masks */
 import Masks from './components/Forms/masks/Masks';
 
+import ToggleButton from './components/ToggleButton';
+
 export {
   BackgroundImage,
   Button,
@@ -59,4 +61,5 @@ export {
   NotificationBadge,
   RoundAvatar,
   Masks,
+  ToggleButton,
 };
