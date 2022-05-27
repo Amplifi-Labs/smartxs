@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {View, TouchableOpacity, Text, ScrollView} from 'react-native';
-import {TailwindFn} from 'twrnc';
-import {Style} from 'twrnc/dist/esm/types';
+import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { TailwindFn } from 'twrnc';
+import { Style } from 'twrnc/dist/esm/types';
 
 type Props = {
   tw: TailwindFn;
@@ -37,13 +37,13 @@ const RadioGroup = ({
     label: '',
     key: '',
   });
-  const defaultLabelStyle = tw.style('font-sm font-medium text-gray-700');
+  const defaultLabelStyle = tw.style('text-sm font-medium text-gray-700');
   const defaultDataStyle = tw.style(
-    'my-1.5 flex-row justify-between items-center bg-white h-15 rounded-md p-4 border border-gray-300',
+    'my-1.5 flex-row justify-between items-center bg-white h-11 rounded-md pl-4 border border-gray-300',
   );
   const defaultTextStyle = tw.style('text-lg text-gray-700');
   const defaultRadioStyle = tw.style(
-    'h-6 w-6 rounded-full bg-white border-8 border-primary-700 items-center justify-center',
+    'h-6 w-6 rounded-full border-8 border-primary-700 items-center justify-center bg-gray-100',
   );
 
   React.useEffect(() => {
@@ -85,7 +85,8 @@ const RadioGroup = ({
                   ...defaultDataStyle,
                   ...dataStyle,
                   ...tw.style(
-                    isSelected(item) && 'border-2 border-primary-700',
+                    isSelected(item) &&
+                      'border-2 border-primary-700 bg-gray-100',
                   ),
                 }}
                 onPress={() => updateValue(item)}

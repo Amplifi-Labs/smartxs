@@ -5,16 +5,15 @@ import {
   PanResponder,
   PanResponderGestureState,
   TouchableWithoutFeedback,
-  View,
+  View
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { TailwindFn } from 'twrnc';
 
-import {TailwindFn} from 'twrnc';
 
 const WINDOW_HEIGHT = Dimensions.get('window').height;
 
-const duration = 200;
-
-const iOSVerticalCompensation = 90;
+const duration = 1000;
 
 type Props = {
   tw: TailwindFn;
@@ -33,39 +32,35 @@ const DraggableView = ({
   show,
   setShow,
 }: Props): JSX.Element => {
-  let initialPosition = 0;
+  const insets = useSafeAreaInsets();
 
   const [touched, setTouched] = React.useState(false);
 
-  const [position, setPosition] = React.useState(
-    show
-      ? new Animated.Value(WINDOW_HEIGHT - maxHeight - iOSVerticalCompensation)
-      : new Animated.Value(WINDOW_HEIGHT - iOSVerticalCompensation),
-  );
+  const [top, setTop] = React.useState(WINDOW_HEIGHT);
+
+  const [position, setPosition] = React.useState(show ? 100 : 0);
+
+  const [opacity, setOpacity] = React.useState(0);
+
+  const positionToTop = (position_: number) => {
+    return WINDOW_HEIGHT - (position_ / 100) * maxHeight;
+  };
+
+  const topToPosition = (top_: number) => {
+    return (100 * (WINDOW_HEIGHT - top_)) / maxHeight;
+  };
 
   React.useEffect(() => {
-    if (!initialPosition) {
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      initialPosition = WINDOW_HEIGHT - maxHeight - iOSVerticalCompensation;
-    }
-  }, []);
+    setTop(positionToTop(position));
+    setOpacity(position * 0.8);
+  }, [position]);
 
   React.useEffect(() => {
-    if (show) {
-      setPosition(
-        new Animated.Value(WINDOW_HEIGHT - maxHeight - iOSVerticalCompensation),
-      );
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    startAnimation();
   }, [show]);
 
   const isAValidMovement = (dx: number, dy: number) => {
     return Math.abs(dy) > Math.abs(dx) && dy > 2;
-  };
-
-  const onUpdatePosition = (position_: number) => {
-    const tempPosition = position_ - 100;
-    setPosition(tempPosition as unknown as Animated.Value);
   };
 
   const moveDrawerView = (gesture: PanResponderGestureState) => {
@@ -73,19 +68,16 @@ const DraggableView = ({
       return;
     }
 
-    const position_ = gesture.moveY;
-    onUpdatePosition(position_);
+    const displacement = positionToTop(position) + gesture.dy;
+    const newPosition = topToPosition(displacement);
+    setPosition(newPosition);
   };
 
-  const startAnimation = (positionY: number) => {
-    const position_ = new Animated.Value(
-      WINDOW_HEIGHT - positionY - iOSVerticalCompensation,
-    );
+  const startAnimation = () => {
+    const position_ = new Animated.Value(position);
     position_.removeAllListeners();
 
-    const toValue = !show
-      ? WINDOW_HEIGHT - maxHeight - iOSVerticalCompensation + 100
-      : WINDOW_HEIGHT - iOSVerticalCompensation + 100;
+    const toValue = show ? 100 : 0;
 
     const animation = Animated.timing(position_, {
       toValue,
@@ -96,20 +88,16 @@ const DraggableView = ({
     animation.start();
 
     position_.addListener(position__ => {
-      if (!ref) {
-        return;
-      }
-      onUpdatePosition(position__.value);
+      setPosition(parseFloat(position__.value.toFixed(2)));
     });
-
-    setShow(!show);
   };
 
-  const moveFinished = (gesture: PanResponderGestureState) => {
+  const moveFinished = () => {
     if (!ref) {
       return;
     }
-    startAnimation(gesture.moveY);
+
+    setShow(false);
   };
 
   const _panGesture = PanResponder.create({
@@ -119,36 +107,41 @@ const DraggableView = ({
     onPanResponderMove: (_, gesture) => {
       moveDrawerView(gesture);
     },
-    onPanResponderRelease: (_, gesture) => {
-      moveFinished(gesture);
+    onPanResponderRelease: () => {
+      moveFinished();
     },
   });
 
   return (
     <>
-      {position && (
-        <Animated.View
-          ref={(ref_: Animated.LegacyRef<View>) => {
-            ref = ref_;
-          }}
-          style={{
-            ...tw`absolute left-0 w-full rounded-t-2xl bg-white h-full shadow-2xl`,
-            top: position,
-          }}
-          {..._panGesture.panHandlers}>
-          <View>
-            <TouchableWithoutFeedback
-              onPressIn={() => setTouched(true)}
-              onPressOut={() => setTouched(false)}>
-              <View style={tw`items-center h-12`}>
-                <View
-                  style={tw`bg-gray-300 h-1.5 w-14 mt-2 mb-5 rounded-full`}
-                />
-              </View>
-            </TouchableWithoutFeedback>
-            {children}
-          </View>
-        </Animated.View>
+      {position !== 0 && (
+        <View
+          style={tw`absolute left-0 right-0 bottom-0 bg-gray-200/${opacity} top-[${
+            insets.top / 4
+          }]`}>
+          <Animated.View
+            ref={(ref_: Animated.LegacyRef<View>) => {
+              ref = ref_;
+            }}
+            style={{
+              ...tw`absolute left-0 w-full rounded-t-2xl bg-white h-full shadow-2xl`,
+              top: top,
+            }}
+            {..._panGesture.panHandlers}>
+            <View>
+              <TouchableWithoutFeedback
+                onPressIn={() => setTouched(true)}
+                onPressOut={() => setTouched(false)}>
+                <View style={tw`items-center h-12`}>
+                  <View
+                    style={tw`bg-gray-300 h-1.5 w-14 mt-2 mb-5 rounded-full`}
+                  />
+                </View>
+              </TouchableWithoutFeedback>
+              {children}
+            </View>
+          </Animated.View>
+        </View>
       )}
     </>
   );

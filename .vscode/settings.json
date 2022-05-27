@@ -1,5 +1,9 @@
 {
-  "cSpell.words": ["smartxs", "twrnc"],
+  "cSpell.words": [
+    "amplifi",
+    "smartxs",
+    "twrnc"
+  ],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
