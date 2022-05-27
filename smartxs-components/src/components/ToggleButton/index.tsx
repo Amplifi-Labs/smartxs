@@ -1,8 +1,8 @@
 import * as React from 'react';
-import {Animated, Easing, Text, TouchableOpacity, View} from 'react-native';
+import { Animated, Easing, Text, TouchableOpacity, View } from 'react-native';
+import { TailwindFn } from 'twrnc';
+import { Style } from 'twrnc/dist/esm/types';
 
-import {TailwindFn} from 'twrnc';
-import {Style} from 'twrnc/dist/esm/types';
 
 type Props = {
   tw: TailwindFn;
@@ -12,7 +12,7 @@ type Props = {
   style?: object;
   isOn?: boolean;
   labelStyle?: Style;
-  styleInsideButton?: Style;
+  innerStyle?: Style;
   onToggle: () => void;
   animatedValue?: Animated.Value;
 };
@@ -26,6 +26,7 @@ const ToggleButton = ({
   style,
   isOn = false,
   labelStyle,
+  innerStyle,
   onToggle = () => {},
 }: Props): JSX.Element => {
   const moveToggle = animatedValue.interpolate({
@@ -58,6 +59,7 @@ const ToggleButton = ({
           <Animated.View
             style={[
               defaultInsideButtonStyle,
+              innerStyle,
               {
                 marginLeft: moveToggle,
               },
