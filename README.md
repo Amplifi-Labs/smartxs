@@ -46,14 +46,7 @@ This component creates a View with an image as background. Accepts jpeg and png 
 This is a clickable component and can execute functions passed as an argument (onPress). Accepts icons and texts as parameters.
 
 ### Samples
-<div
-  data-snack-id="smartxs---buttons"
-  data-snack-platform="ios"
-  data-snack-preview="true"
-  data-snack-theme="light"
-  data-snack-loading="lazy"
-  style="overflow:hidden;background:#fafafa;border:1px solid rgba(0,0,0,.08);border-radius:4px;height:505px;width:100%">
-</div>
+https://snack.expo.dev/@paulorieck/smartxs---buttons
 
 ### Props:
 
