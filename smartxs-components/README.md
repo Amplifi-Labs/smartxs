@@ -2,7 +2,7 @@
 
 ## Tailwind based React Native components
 
-<img src="https://raw.githubusercontent.com/Amplifi-Labs/smartxs/master/files/SmartXS%20only%20symbol.png" alt="Smartxs Logo" width=200  />
+<img src="https://raw.githubusercontent.com/Amplifi-Labs/smartxs/master/smartxs-components/files/Amplifi-Labs-Logo.png" alt="Smartxs Logo" width=200  />
 
 This library is still on initial phase of development. Feel free to use it, but be aware that structural changes are still possible. If you want to use it, please, lock the imported version on your package.json file.
 
@@ -46,6 +46,14 @@ This component creates a View with an image as background. Accepts jpeg and png 
 This is a clickable component and can execute functions passed as an argument (onPress). Accepts icons and texts as parameters.
 
 ### Samples
+<div
+  data-snack-id="smartxs---buttons"
+  data-snack-platform="ios"
+  data-snack-preview="true"
+  data-snack-theme="light"
+  data-snack-loading="lazy"
+  style="overflow:hidden;background:#fafafa;border:1px solid rgba(0,0,0,.08);border-radius:4px;height:505px;width:100%">
+</div>
 
 ### Props:
 
