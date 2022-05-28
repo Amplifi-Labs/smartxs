@@ -48,6 +48,52 @@ This is a clickable component and can execute functions passed as an argument (o
 ### Samples
 https://snack.expo.dev/@paulorieck/smartxs---button?platform=ios
 
+```
+import * as React from 'react';
+import { Text, View, StyleSheet } from 'react-native';
+import { Card, Button, H2 } from '@amplifi-labs/smartxs';
+
+import RightIcon from './icons/arrow-right-white';
+
+import tw from './services/tw';
+
+export default function App() {
+  return (
+    <View style={tw`p-2 mt-10`}>
+      <Card tw={tw} style={tw`bg-gray-100 mb-4`}>
+        <H2 tw={tw} style={tw`pb-2`}>Button Vanilla</H2>
+        <Button tw={tw} onPress={() => console.log('You clicked on me!')}>Click Me</Button>
+      </Card>
+      <Card tw={tw} style={tw`bg-gray-100 mb-4`}>
+        <H2 tw={tw} style={tw`pb-2`}>Button Primary</H2>
+        <Button tw={tw} type="primary" onPress={() => console.log('You clicked on me!')}>Click Me</Button>
+      </Card>
+      <Card tw={tw} style={tw`bg-gray-100 mb-4`}>
+        <H2 tw={tw} style={tw`pb-2`}>Button Secondary</H2>
+        <Button tw={tw} type="secondary" onPress={() => console.log('You clicked on me!')}>Click Me</Button>
+      </Card>
+      <Card tw={tw} style={tw`bg-gray-100 mb-4`}>
+        <H2 tw={tw} style={tw`pb-2`}>Button With Icon on The Right</H2>
+        <Button tw={tw} onPress={() => console.log('You clicked on me!')} iconRight={RightIcon}>Click Me</Button>
+      </Card>
+      <Card tw={tw} style={tw`bg-gray-100 mb-4`}>
+        <H2 tw={tw} style={tw`pb-2`}>Button With Customized TailwindCSS</H2>
+        <Button
+          tw={tw}
+          onPress={() => console.log('You clicked on me!')}
+          style={tw`bg-green-700 rounded-full`}
+          textStyle={tw`text-gray-100 font-bold text-2xl`}
+        >
+          Click Me
+        </Button>
+      </Card>
+    </View>
+  );
+}
+```
+
+<img src="https://raw.githubusercontent.com/Amplifi-Labs/smartxs/master/smartxs-components/files/sample-buttons.png" alt="Smartxs Logo" width=200  />
+
 ### Props:
 
 | Variable  | Value Type               | Default | Mandatory          | Notes                                                                      |
@@ -101,4 +147,4 @@ https://snack.expo.dev/@paulorieck/smartxs---button?platform=ios
 
 This library is being developed by Amplifi Labs. To know more about our company, please, access our [website](https://www.amplifilabs.com).
 
-![Amplifi Labs Logo](https://raw.githubusercontent.com/Amplifi-Labs/smartxs/master/files/Amplifi-Labs-Logo.png)
+![Amplifi Labs Logo](https://raw.githubusercontent.com/Amplifi-Labs/smartxs/master/smartxs-components/files/Amplifi-Labs-Logo.png)
