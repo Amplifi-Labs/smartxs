@@ -30,6 +30,34 @@ This component creates a View with an image as background. Accepts jpeg and png 
 Try using Expo:
 https://snack.expo.dev/@paulorieck/smartxs---backgroundimage?platform=ios
 
+```
+import * as React from 'react';
+import { Text, View, StyleSheet } from 'react-native';
+import { Card, Button, H2, BackgroundImage } from '@amplifi-labs/smartxs';
+
+import Background from './assets/pexels-max-ravier-5589102.jpg';
+
+import tw from './services/tw';
+
+export default function App() {
+  return (
+    <BackgroundImage
+      tw={tw}
+      mask="bg-black/40"
+      image={Background}
+    >
+      <View>
+        <Card tw={tw} style={tw`mt-10 mx-4`}>
+          <H2 tw={tw}>You see a Background Image with a Mask</H2>
+        </Card>
+      </View>
+    </BackgroundImage>
+  );
+}
+```
+
+<img src="https://raw.githubusercontent.com/Amplifi-Labs/smartxs/master/smartxs-components/files/background-image.png" alt="Smartxs Logo" width=200  />
+
 ### Props:
 
 | Variable    | Value Type                | Default | Mandatory          | Notes                                                                           |
