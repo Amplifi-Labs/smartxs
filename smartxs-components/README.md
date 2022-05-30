@@ -27,6 +27,8 @@ If your project uses SmartXS, please, let us know! We would love :heart: to have
 This component creates a View with an image as background. Accepts jpeg and png files.
 
 ### Samples
+Try using Expo:
+https://snack.expo.dev/@paulorieck/smartxs---backgroundimage?platform=ios
 
 ### Props:
 
