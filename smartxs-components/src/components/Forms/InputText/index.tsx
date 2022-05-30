@@ -1,12 +1,10 @@
 import * as React from 'react';
-import {KeyboardTypeOptions, Text, View} from 'react-native';
-import {Style} from 'twrnc/dist/esm/types';
-import {SvgXml} from 'react-native-svg';
-
-import {TailwindFn} from 'twrnc';
-
+import { KeyboardTypeOptions, NativeSyntheticEvent, Text, TextInputFocusEventData, View } from 'react-native';
+import { SvgXml } from 'react-native-svg';
+import { TailwindFn } from 'twrnc';
+import { Style } from 'twrnc/dist/esm/types';
 import InputMask from '../masks/InputMask';
-import type {MaskInputProps} from '../masks/InputMask.types';
+import type { MaskInputProps } from '../masks/InputMask.types';
 
 type Props = {
   tw: TailwindFn;
@@ -18,7 +16,7 @@ type Props = {
   inputStyle?: Style;
   iconStyle?: Style;
   helperStyle?: Style;
-  onChangeText: React.Dispatch<React.SetStateAction<string>>;
+  onChangeText: ((text: string) => void);
   value: string;
   inputType?: 'primary' | 'secondary';
   helperType?: 'primary' | 'secondary';
@@ -26,6 +24,7 @@ type Props = {
   errorStyle?: Style;
   icon?: string;
   keyboardType?: KeyboardTypeOptions;
+  onBlur?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
 } & MaskInputProps;
 
 const InputText = ({
@@ -50,6 +49,7 @@ const InputText = ({
   showObfuscatedValue,
   placeholderFillCharacter,
   obfuscationCharacter,
+  onBlur,
 }: Props): JSX.Element => {
   const defaultLabelStyle = tw.style('text-sm font-medium text-gray-700');
   const defaultInputStyle = tw.style(
@@ -85,6 +85,7 @@ const InputText = ({
           showObfuscatedValue={showObfuscatedValue}
           placeholderFillCharacter={placeholderFillCharacter}
           obfuscationCharacter={obfuscationCharacter}
+          onBlur={onBlur}
         />
         {icon && (
           <View style={{...defaultIconStyle, ...iconStyle}}>

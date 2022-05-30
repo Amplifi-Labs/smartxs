@@ -46,6 +46,7 @@ This component creates a View with an image as background. Accepts jpeg and png 
 This is a clickable component and can execute functions passed as an argument (onPress). Accepts icons and texts as parameters.
 
 ### Samples
+Try using Expo:
 https://snack.expo.dev/@paulorieck/smartxs---button?platform=ios
 
 ```

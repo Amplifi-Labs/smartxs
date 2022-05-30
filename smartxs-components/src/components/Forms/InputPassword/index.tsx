@@ -1,9 +1,9 @@
 import * as React from 'react';
-import {Text, TextInput, View} from 'react-native';
-import {SvgXml} from 'react-native-svg';
-import {Style} from 'twrnc/dist/esm/types';
+import { NativeSyntheticEvent, Text, TextInput, TextInputFocusEventData, View } from 'react-native';
+import { SvgXml } from 'react-native-svg';
+import { TailwindFn } from 'twrnc';
+import { Style } from 'twrnc/dist/esm/types';
 
-import {TailwindFn} from 'twrnc';
 
 type Props = {
   tw: TailwindFn;
@@ -16,7 +16,7 @@ type Props = {
   textInputStyle?: Style;
   helperStyle?: Style;
   iconStyle?: Style;
-  onChangeText: React.Dispatch<React.SetStateAction<string>>;
+  onChangeText: (text: string) => void;
   value: string;
   inputType?: 'primary' | 'secondary';
   helperType?: 'primary' | 'secondary';
@@ -24,6 +24,7 @@ type Props = {
   visibleIcon: string;
   error?: string;
   errorStyle?: Style;
+  onBlur?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
 };
 
 const InputPassword: React.FC<Props> = ({
@@ -44,6 +45,7 @@ const InputPassword: React.FC<Props> = ({
   visibleIcon,
   error,
   errorStyle,
+  onBlur,
 }): JSX.Element => {
   const [visible, setVisible] = React.useState(false);
 
@@ -75,11 +77,11 @@ const InputPassword: React.FC<Props> = ({
       <View>
         <TextInput
           style={{...defaultInputStyle, ...typeInputStyle, ...inputStyle}}
-          // style={tw``}
           onChangeText={onChangeText}
           value={value || undefined}
           placeholder={placeholder?.toString() || undefined}
           secureTextEntry={!visible}
+          onBlur={onBlur}
         />
         <View style={{...defaultIconStyle, ...iconStyle}}>
           <SvgXml
