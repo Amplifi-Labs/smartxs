@@ -28,7 +28,6 @@ type Props = {
   colorsArray?: string[];
   style?: Style;
   labelingStyle?: Style;
-  chartStyle?: Style;
   width: number;
   height: number;
   scaleSize: number;
@@ -47,7 +46,6 @@ const VerticalBars = ({
   colorsArray = defaultColorsArray,
   style,
   labelingStyle,
-  // chartStyle,
   width,
   height,
   scaleSize,

@@ -43,7 +43,7 @@ const Button = ({
             <SvgXml xml={iconLeft} />
           </View>
         )}
-        <Text style={{...defaultTextStyles, ...textStyle}} onPress={onPress}>
+        <Text style={{...defaultTextStyles, ...textStyle}}>
           {children}
         </Text>
         {iconRight && (

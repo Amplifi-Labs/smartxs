@@ -31,11 +31,11 @@ If your project uses SmartXS, please, let us know! We would love :heart: to have
 
 ## BackgroundImage
 
-### Description:
+#### Description:
 
 This component creates a View with an image as background. Accepts jpeg and png files.
 
-### Samples
+#### Samples
 Try using Expo:
 https://snack.expo.dev/@paulorieck/smartxs---backgroundimage?platform=ios
 
@@ -67,7 +67,7 @@ export default function App() {
 
 <img src="https://raw.githubusercontent.com/Amplifi-Labs/smartxs/master/smartxs-components/files/background-image.png" alt="Background Image Sample Image" width=200  />
 
-### Props:
+#### Props:
 
 | Variable    | Value Type                | Default | Mandatory          | Notes                                                                           |
 | ----------- | ------------------------- | ------- | ------------------ | ------------------------------------------------------------------------------- |
@@ -80,11 +80,11 @@ export default function App() {
 
 ## Button
 
-### Description:
+#### Description:
 
 This is a clickable component and can execute functions passed as an argument (onPress). Accepts icons and texts as parameters.
 
-### Samples
+#### Samples
 Try using Expo:
 https://snack.expo.dev/@paulorieck/smartxs---button?platform=ios
 
@@ -134,7 +134,7 @@ export default function App() {
 
 <img src="https://raw.githubusercontent.com/Amplifi-Labs/smartxs/master/smartxs-components/files/sample-buttons.png" alt="Buttons Image Sample" width=200  />
 
-### Props:
+#### Props:
 
 | Variable  | Value Type               | Default | Mandatory          | Notes                                                                      |
 | --------- | ------------------------ | ------- | ------------------ | -------------------------------------------------------------------------- |
@@ -149,11 +149,11 @@ export default function App() {
 
 ## Card
 
-### Description:
+#### Description:
 
 This is a div that has a shadow around it and rounded corners.
 
-### Samples
+#### Samples
 Try using Expo:
 https://snack.expo.dev/@paulorieck/smartxs---card?platform=ios
 
@@ -205,35 +205,150 @@ export default function App() {
 
 ### VerticalBars
 
+#### Description:
+This component renders vertical bars charts
+
+#### Samples
+
+#### Props
+
+| Variable    | Value Type               | Default | Mandatory          | Notes                                                                      |
+| ----------- | ------------------------ | ------- | ------------------ | -------------------------------------------------------------------------- |
+| tw          | Tailwind Function        | \_      | :heavy_check_mark: | \_                                                                         |
+| style       | Tailwind Style           | \_      | :x:                | This style is applied to the container View                                |
+| labelingStyle | Tailwind Style         | \_      | :x:                | This style is applied to the charts labels                                 |
+| data        | See details bellow       | \_      | :heavy_check_mark: | \_                                                                         |
+| colorsArray | string[]                 | ['#34D399', '#38BDF8', '#A78BFA'] | :x: | \_                                                              |
+| width       | number                   | \_      | :heavy_check_mark: | \_                                                                         |
+| height      | number                   | \_      | :heavy_check_mark: | \_                                                                         |
+
+
+scaleSize: number;
+showLabels?: boolean;
+fontColor?: string;
+balloonData?: BalloonData;
+setBalloonData?: (valueId?: string | undefined) => void;
+notSelectedColor?: string;
+
 ## CollapsibleModal
+
+#### Description:
+
+#### Samples
+
+#### Props
 
 ## Forms
 
+#### Description:
+
+#### Samples
+
+#### Props
+
 ### InputCurrency
+
+#### Description:
+
+#### Samples
+
+#### Props
 
 ### InputNumber
 
+#### Description:
+
+#### Samples
+
+#### Props
+
 ### InputPassword
+
+#### Description:
+
+#### Samples
+
+#### Props
 
 ### InputText
 
+#### Description:
+
+#### Samples
+
+#### Props
+
 ## H1
+
+#### Description:
+
+#### Samples
+
+#### Props
 
 ## HR
 
+#### Description:
+
+#### Samples
+
+#### Props
+
 ## Image
+
+#### Description:
+
+#### Samples
+
+#### Props
 
 ## Info
 
+#### Description:
+
+#### Samples
+
+#### Props
+
 ## Label
+
+#### Description:
+
+#### Samples
+
+#### Props
 
 ## LoadingRound
 
+#### Description:
+
+#### Samples
+
+#### Props
+
 ## ProgressSteps
+
+#### Description:
+
+#### Samples
+
+#### Props
 
 ## Spinner
 
+#### Description:
+
+#### Samples
+
+#### Props
+
 ## SwipeCarousel
+
+#### Description:
+
+#### Samples
+
+#### Props
 
 ### Amplifi Labs
 
