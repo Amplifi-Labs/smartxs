@@ -18,6 +18,15 @@ Key concepts of this library:
 
 If your project uses SmartXS, please, let us know! We would love :heart: to have this information!
 
+## Notes
+- This library was designed to work with Tailwind styles, through [twrnc](https://www.npmjs.com/package/twrnc). For a complete documentation on how to use tailwinds using react native, please, check [twrnc's](https://www.npmjs.com/package/twrnc) documentation. Thank you, [Jared](https://www.npmjs.com/~jaredhenderson)!
+- It's mandatory to have this packages installed on your project:
+  - [react](https://www.npmjs.com/package/react);
+  - [react-native](https://www.npmjs.com/package/react-native);
+  - [react-native-svg](https://www.npmjs.com/package/react-native-svg);
+  - [twrnc](https://www.npmjs.com/package/twrnc),
+  - [react-native-safe-area-context](https://www.npmjs.com/package/react-native-safe-area-context);
+
 # Components
 
 ## BackgroundImage
@@ -56,7 +65,7 @@ export default function App() {
 }
 ```
 
-<img src="https://raw.githubusercontent.com/Amplifi-Labs/smartxs/master/smartxs-components/files/background-image.png" alt="Smartxs Logo" width=200  />
+<img src="https://raw.githubusercontent.com/Amplifi-Labs/smartxs/master/smartxs-components/files/background-image.png" alt="Background Image Sample Image" width=200  />
 
 ### Props:
 
@@ -123,7 +132,7 @@ export default function App() {
 }
 ```
 
-<img src="https://raw.githubusercontent.com/Amplifi-Labs/smartxs/master/smartxs-components/files/sample-buttons.png" alt="Smartxs Logo" width=200  />
+<img src="https://raw.githubusercontent.com/Amplifi-Labs/smartxs/master/smartxs-components/files/sample-buttons.png" alt="Buttons Image Sample" width=200  />
 
 ### Props:
 
@@ -139,6 +148,58 @@ export default function App() {
 | iconRight | SVG string               | \_      | :x:                | If defined will add an icon to the right of the text.                      |
 
 ## Card
+
+### Description:
+
+This is a div that has a shadow around it and rounded corners.
+
+### Samples
+Try using Expo:
+https://snack.expo.dev/@paulorieck/smartxs---card?platform=ios
+
+```
+import * as React from 'react';
+import { Text, View, StyleSheet } from 'react-native';
+import { Card, Button, H2, BackgroundImage, Paragraph } from '@amplifi-labs/smartxs';
+
+import Background from './assets/pexels-max-ravier-5589102.jpg';
+
+import tw from './services/tw';
+
+export default function App() {
+  return (
+    <BackgroundImage
+      tw={tw}
+      mask="bg-black/40"
+      image={Background}
+    >
+      <View>
+        <Card tw={tw} style={tw`mt-10 mx-4`}>
+          <H2 tw={tw}>This is the vanilla Card element</H2>
+          <Paragraph tw={tw}>Just some fake content to show how it looks like!</Paragraph>
+          <Paragraph tw={tw}>Some more content!</Paragraph>
+        </Card>
+        <Card tw={tw} style={tw`mt-10 mx-4 border-2 border-dashed border-blue-400 bg-blue-100`}>
+          <H2 tw={tw}>This is a customized Card element</H2>
+          <Paragraph tw={tw}>Just some fake content to show how it looks like!</Paragraph>
+          <Paragraph tw={tw}>Some more content!</Paragraph>
+          <Paragraph tw={tw}>As you see, you are free to do a lot of different things!</Paragraph>
+        </Card>
+      </View>
+    </BackgroundImage>
+  );
+}
+```
+
+<img src="https://raw.githubusercontent.com/Amplifi-Labs/smartxs/master/smartxs-components/files/sample-cards.png" alt="Card Sample Image" width=200  />
+
+### Props:
+
+| Variable  | Value Type               | Default | Mandatory          | Notes                                                                      |
+| --------- | ------------------------ | ------- | ------------------ | -------------------------------------------------------------------------- |
+| tw        | Tailwind Function        | \_      | :heavy_check_mark: | \_                                                                         |
+| style     | Tailwind Style           | \_      | :x:                | This style is applied to the container View                                |
+| children  | String                   | \_      | :x:                | The children props are limited to strings.                                 |
 
 ## Charts
 
