@@ -210,7 +210,7 @@ This component renders vertical bars charts
 
 #### Samples
 Try using Expo:
-https://snack.expo.dev/@paulorieck/smartxs---charts---vertical-bars
+https://snack.expo.dev/@paulorieck/smartxs---charts---vertical-bars?platform=ios
 
 ```
 import * as React from 'react';
