@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Animated, Text, View } from 'react-native';
-import { SvgXml } from 'react-native-svg';
-import { Style, TailwindFn } from 'twrnc/dist/esm/types';
+import {Animated, Text, View} from 'react-native';
+import {SvgXml} from 'react-native-svg';
+import {Style, TailwindFn} from 'twrnc/dist/esm/types';
 import SuccessIcon from './icons/success';
-import { default as ErrorIcon, default as WarningIcon } from './icons/warning';
+import {default as ErrorIcon, default as WarningIcon} from './icons/warning';
 
 type Props = {
   tw: TailwindFn;
@@ -101,7 +101,7 @@ const ToastMessage = ({
           }
         />
       </View>
-      <View style={tw`justify-center ml-2`}>
+      <View style={tw`justify-center ml-2 flex-1`}>
         <Text
           style={{
             ...tw`text-white text-base font-medium`,
