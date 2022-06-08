@@ -39,20 +39,22 @@ const ToggleButton = ({
   const defaultToggleStyle = tw`w-8.5 h-4.5 ml-1 rounded-lg justify-center`;
   const defaultInsideButtonStyle = tw`w-4 h-4 bg-white rounded-lg shadow-black shadow`;
 
+  React.useEffect(() => {
+    animatedValue.setValue(isOn ? 0 : 1);
+    Animated.timing(animatedValue, {
+      toValue: isOn ? 1 : 0,
+      duration: 300,
+      easing: Easing.linear,
+      useNativeDriver: false,
+    }).start();
+  }, [isOn]);
+
   return (
     <View>
       {!!label && <Text style={[defaultLabelStyle, labelStyle]}>{label}</Text>}
       <TouchableOpacity
         onPress={() => {
           typeof onToggle === 'function' && onToggle();
-
-          animatedValue.setValue(isOn ? 0 : 1);
-          Animated.timing(animatedValue, {
-            toValue: isOn ? 1 : 0,
-            duration: 300,
-            easing: Easing.linear,
-            useNativeDriver: false,
-          }).start();
         }}>
         <View style={[defaultToggleStyle, style, {backgroundColor: color}]}>
           <Animated.View
