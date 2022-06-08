@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { Animated, Easing, Text, TouchableOpacity, View } from 'react-native';
-import { TailwindFn } from 'twrnc';
-import { Style } from 'twrnc/dist/esm/types';
-
+import {Animated, Easing, Text, TouchableOpacity, View} from 'react-native';
+import {TailwindFn} from 'twrnc';
+import {Style} from 'twrnc/dist/esm/types';
 
 type Props = {
   tw: TailwindFn;
@@ -36,14 +35,6 @@ const ToggleButton = ({
 
   const color = isOn ? onColor : offColor;
 
-  animatedValue.setValue(isOn ? 0 : 1);
-  Animated.timing(animatedValue, {
-    toValue: isOn ? 1 : 0,
-    duration: 300,
-    easing: Easing.linear,
-    useNativeDriver: false,
-  }).start();
-
   const defaultLabelStyle = tw`mr-1`;
   const defaultToggleStyle = tw`w-8.5 h-4.5 ml-1 rounded-lg justify-center`;
   const defaultInsideButtonStyle = tw`w-4 h-4 bg-white rounded-lg shadow-black shadow`;
@@ -54,6 +45,14 @@ const ToggleButton = ({
       <TouchableOpacity
         onPress={() => {
           typeof onToggle === 'function' && onToggle();
+
+          animatedValue.setValue(isOn ? 0 : 1);
+          Animated.timing(animatedValue, {
+            toValue: isOn ? 1 : 0,
+            duration: 300,
+            easing: Easing.linear,
+            useNativeDriver: false,
+          }).start();
         }}>
         <View style={[defaultToggleStyle, style, {backgroundColor: color}]}>
           <Animated.View
