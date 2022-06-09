@@ -17,7 +17,7 @@ type Props = {
 };
 
 const ToggleButton = ({
-  animatedValue = new Animated.Value(0),
+  // animatedValue = new Animated.Value(0),
   tw,
   onColor = '#0369A1',
   offColor = '#ecf0f1',
@@ -28,10 +28,7 @@ const ToggleButton = ({
   innerStyle,
   onToggle = () => {},
 }: Props): JSX.Element => {
-  const moveToggle = animatedValue.interpolate({
-    inputRange: [0, 1],
-    outputRange: [0, 17],
-  });
+  const [moveToggle, setMoveToggle] = React.useState(0);
 
   const color = isOn ? onColor : offColor;
 
@@ -40,13 +37,20 @@ const ToggleButton = ({
   const defaultInsideButtonStyle = tw`w-4 h-4 bg-white rounded-lg shadow-black shadow`;
 
   React.useEffect(() => {
-    animatedValue.setValue(isOn ? 0 : 1);
-    Animated.timing(animatedValue, {
+    const position_ = new Animated.Value(isOn ? 0 : 1);
+    position_.removeAllListeners();
+
+    Animated.timing(position_, {
       toValue: isOn ? 1 : 0,
       duration: 300,
       easing: Easing.linear,
       useNativeDriver: false,
     }).start();
+
+    position_.addListener(position__ => {
+      const moveToggle_ = position__.value * 17;
+      setMoveToggle(moveToggle_);
+    });
   }, [isOn]);
 
   return (
