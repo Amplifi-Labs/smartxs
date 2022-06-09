@@ -59,6 +59,7 @@ const VerticalBars = ({
   const [scale, setScale] = React.useState(['0']);
   const [unitaryHeight, setUnitaryHeight] = React.useState(0);
   const [selectedColumn, setSelectedColumn] = React.useState('');
+  const [consumableColorsArray] = React.useState([...colorsArray].reverse());
 
   const defaultStyles = tw`flex-1 font-medium text-base text-gray-500 items-center`;
   const chartDefaultStyles = tw``;
@@ -68,8 +69,6 @@ const VerticalBars = ({
   const scaleWidth = 50;
 
   let dx = scaleWidth;
-
-  colorsArray = colorsArray.reverse();
 
   // Calculates the bar widths
   React.useEffect(() => {
@@ -170,9 +169,9 @@ const VerticalBars = ({
                       height={barHeight}
                       fill={
                         !selectedColumn
-                          ? colorsArray[idx2]
+                          ? consumableColorsArray[idx2]
                           : selectedColumn === key_
-                          ? colorsArray[idx2]
+                          ? consumableColorsArray[idx2]
                           : notSelectedColor
                       }
                     />
@@ -197,7 +196,9 @@ const VerticalBars = ({
               return (
                 <View key={idx} style={tw`flex-row items-center`}>
                   <SvgXml
-                    xml={CircleSvg({color: colorsArray.reverse()[idx]})}
+                    xml={CircleSvg({
+                      color: [...consumableColorsArray].reverse()[idx],
+                    })}
                     width={8}
                   />
                   <TextNative
